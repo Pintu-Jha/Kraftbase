@@ -2,15 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { PersonalizedCardCurve } from '../../assets/illustrations/PersonalizedCardCurve';
 import KidOnApple from '../../assets/illustrations/KidOnApple';
+import { StarIcon } from '../../assets/icons/svg/StarIcon';
+import { scale, verticalScale, moderateScale, textScale } from '../../theme/responsive';
 
-/**
- * FeatureCardStack - Three overlapping rotated cards for onboarding screen
- * Card order: back (pink) -> middle (lime) -> front (blue main content)
- */
+
 export const FeatureCardStack: React.FC = () => {
   return (
     <View style={styles.container}>
-      {/* Card 1 - Back (Pink) */}
       <View
         style={[
           styles.card,
@@ -21,7 +19,6 @@ export const FeatureCardStack: React.FC = () => {
         <Text style={styles.cardLabel}>Instant Feedback</Text>
       </View>
 
-      {/* Card 2 - Middle (Lime) */}
       <View
         style={[
           styles.card,
@@ -34,7 +31,6 @@ export const FeatureCardStack: React.FC = () => {
         </Text>
       </View>
 
-      {/* Card 3 - Front (Blue) - Main content card */}
       <View
         style={[
           styles.card,
@@ -42,12 +38,15 @@ export const FeatureCardStack: React.FC = () => {
           { backgroundColor: '#CADDF7' },
         ]}
       >
-        {/* Decorative curved vector path */}
-        <PersonalizedCardCurve />
-        
-        {/* Main content */}
+        <View style={styles.starIconWrapper}>
+          <StarIcon width={scale(21)} height={scale(21)} />
+        </View>
+
+        <View style={styles.PersonalizedCardCurveillustrationWrapper}>
+          <PersonalizedCardCurve />
+        </View>
+
         <View style={styles.frontCardContent}>
-          {/* Left side - Text content */}
           <View style={styles.textContent}>
             <View style={styles.titleRow}>
               <Text style={styles.titleText}>Personalized</Text>
@@ -55,12 +54,11 @@ export const FeatureCardStack: React.FC = () => {
             <View style={styles.highlightPill}>
               <Text style={styles.highlightText}>Learning</Text>
             </View>
-            
+
             <Text style={styles.bodyText}>
               Lessons adapt to your child's pace, focusing on what they need most.
             </Text>
 
-            {/* Pagination dots */}
             <View style={styles.pagination}>
               <View style={styles.dotActive} />
               <View style={styles.dotInactive} />
@@ -69,15 +67,10 @@ export const FeatureCardStack: React.FC = () => {
           </View>
         </View>
 
-        {/* Kid on apple illustration - positioned absolute bottom right */}
         <View style={styles.illustrationWrapper}>
           <KidOnApple />
         </View>
       </View>
-
-      {/* Decorative emoji accents */}
-      <Text style={styles.emojiAccent1}>💡</Text>
-      <Text style={styles.emojiAccent2}>⭐</Text>
     </View>
   );
 };
@@ -85,50 +78,45 @@ export const FeatureCardStack: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 500,
+    height: verticalScale(450),
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 32,
   },
   card: {
     position: 'absolute',
-    borderRadius: 20,
-    borderWidth: 7,
+    borderRadius: moderateScale(20),
+    borderWidth: scale(7),
     borderColor: '#FFFFFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 12,
-    elevation: 3,
   },
   cardBack: {
-    width: 200,
-    height: 133,
+    width: scale(200),
+    height: verticalScale(133),
     transform: [{ rotate: '-7.95deg' }],
-    top: 80,
-    right: 40,
+    top: verticalScale(40),
+    right: scale(100),
+    paddingTop: verticalScale(16),
     alignItems: 'center',
-    justifyContent: 'center',
   },
   cardMiddle: {
-    width: 270,
-    height: 180,
+    width: scale(270),
+    height: verticalScale(180),
     transform: [{ rotate: '7.47deg' }],
-    top: 110,
-    left: 30,
+    top: verticalScale(100),
+    left: scale(60),
+    paddingTop: verticalScale(16),
     alignItems: 'center',
-    justifyContent: 'center',
   },
   cardFront: {
-    width: 340,
-    height: 311,
-    borderRadius: 24,
+    width: scale(340),
+    height: verticalScale(311),
+    borderRadius: moderateScale(24),
     transform: [{ rotate: '-1.71deg' }],
-    top: 150,
-    padding: 20,
+    top: verticalScale(160),
+    alignSelf: 'center',
+    padding: moderateScale(20),
   },
   cardLabel: {
-    fontSize: 16,
+    fontSize: textScale(16),
     letterSpacing: -0.176,
     fontFamily: 'Inter-Medium',
     color: '#010000',
@@ -142,74 +130,87 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   textContent: {
-    flex: 1,
-    gap: 8,
-    maxWidth: 200,
+    gap: verticalScale(8),
+    maxWidth: scale(180),
+    paddingBottom: verticalScale(60),
   },
   titleRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   titleText: {
-    fontSize: 30,
+    fontSize: textScale(28),
     letterSpacing: -0.33,
     fontFamily: 'Inter-Medium',
     color: '#010000',
   },
   highlightPill: {
     backgroundColor: '#71A6EE',
-    borderRadius: 32,
-    paddingHorizontal: 16,
-    paddingVertical: 4,
+    borderRadius: moderateScale(32),
+    paddingHorizontal: scale(14),
+    paddingVertical: verticalScale(3),
     alignSelf: 'flex-start',
-    marginBottom: 8,
+    marginBottom: verticalScale(6),
   },
   highlightText: {
-    fontSize: 27,
+    fontSize: textScale(25),
     letterSpacing: -0.297,
     fontFamily: 'Inter-Medium',
     color: '#FFFFFF',
   },
   bodyText: {
-    fontSize: 14,
+    fontSize: textScale(13),
     letterSpacing: -0.154,
     fontFamily: 'Inter-Regular',
     color: 'rgba(28,39,76,0.5)',
-    lineHeight: 20,
+    lineHeight: textScale(18),
+    flexWrap: 'wrap',
   },
   pagination: {
     flexDirection: 'row',
-    gap: 6,
-    marginTop: 12,
+    gap: scale(6),
+    marginTop: verticalScale(12),
   },
   dotActive: {
-    width: 24,
-    height: 8,
-    borderRadius: 4,
+    width: scale(24),
+    height: verticalScale(8),
+    borderRadius: moderateScale(4),
     backgroundColor: '#1C274C',
   },
   dotInactive: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    width: scale(8),
+    height: verticalScale(8),
+    borderRadius: moderateScale(4),
     backgroundColor: 'rgba(28,39,76,0.2)',
   },
   illustrationWrapper: {
     position: 'absolute',
-    bottom: -30,
-    right: -10,
+    bottom: verticalScale(-25),
+    right: scale(-15),
     zIndex: 2,
+  },
+  PersonalizedCardCurveillustrationWrapper: {
+    position: 'absolute',
+    bottom: verticalScale(55),
+    right: scale(-5),
+    zIndex: 1,
+  },
+  starIconWrapper: {
+    position: 'absolute',
+    top: verticalScale(-15),
+    left: 0,
+    zIndex: 3,
   },
   emojiAccent1: {
     position: 'absolute',
-    fontSize: 24,
-    top: 70,
-    right: 60,
+    fontSize: textScale(24),
+    top: verticalScale(70),
+    right: scale(60),
   },
   emojiAccent2: {
     position: 'absolute',
-    fontSize: 20,
-    bottom: 120,
-    left: 20,
+    fontSize: textScale(20),
+    bottom: verticalScale(120),
+    left: scale(20),
   },
 });

@@ -1,59 +1,50 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, StatusBar, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../../components/ui/Button';
 import { FeatureCardStack } from '../../components/composite/FeatureCardStack';
 import { OnboardingBackgroundCurve } from '../../assets/illustrations/OnboardingBackgroundCurve';
+import { LOGO } from '../../assets/icons/svg/LOGO';
+import { LogoRing } from '../../assets/icons/svg/LogoRing';
+import { scale, verticalScale, textScale } from '../../theme/responsive';
 import type { OnboardingScreenProps } from '../../navigation/types';
 
 export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }) => {
-  const handleSignUp = () => {
-    // No real auth - navigate directly to Home per plan assumptions
-    navigation.navigate('Home');
-  };
-
-  const handleLogIn = () => {
-    // No real auth - navigate directly to Home per plan assumptions
-    navigation.navigate('Home');
-  };
+  const handleSignUp = () => navigation.navigate('MainTabs');
+  const handleLogIn = () => navigation.navigate('MainTabs');
 
   return (
-    <SafeAreaView style={styles.safe}>
+    <SafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" />
-      
-      {/* Decorative background curve */}
-      <OnboardingBackgroundCurve />
 
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Logo */}
-        <View style={styles.logoContainer}>
-          <View style={styles.logoRing}>
-            <Ionicons name="book-outline" size={32} color="#71A6EE" />
-          </View>
+      <View style={styles.container}>
+        <View style={styles.backgroundCurveContainer}>
+          <OnboardingBackgroundCurve />
         </View>
 
-        {/* App name */}
-        <Text style={styles.appName}>SmartLearn</Text>
+        <View style={styles.header}>
+          <View style={styles.logoRing}>
+            <LogoRing/>
+            <View style={styles.logoCenter}>
+              <LOGO width={scale(41)} height={scale(25)} />
+            </View>
+          </View>
+          <Text style={styles.appName}>SmartLearn</Text>
+        </View>
 
-        {/* Tilted feature card stack */}
-        <FeatureCardStack />
+   
+        <View style={styles.cardsContainer}>
+          <FeatureCardStack />
+        </View>
 
-        {/* Buttons */}
-        <View style={styles.buttonContainer}>
+        <View style={styles.minGap} />
+
+        <View style={styles.buttonsContainer}>
           <Button label="Sign up" variant="filled" onPress={handleSignUp} />
+          <View style={styles.buttonSpacer} />
           <Button label="Log in" variant="outline" onPress={handleLogIn} />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -63,37 +54,53 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  scrollContent: {
-    flexGrow: 1,
-    paddingHorizontal: 20,
-    paddingTop: 40,
-    paddingBottom: 32,
-    alignItems: 'center',
+  container: {
+    flex: 1,
+    paddingBottom: Platform.OS === 'android' ? verticalScale(20) : 0,
   },
-  logoContainer: {
-    marginBottom: 16,
+  backgroundCurveContainer: {
+    position: 'absolute',
+    top: verticalScale(-60),
+    left: scale(60),
+    zIndex: -1,
+  },
+  header: {
+    alignItems: 'center',
+    paddingTop: verticalScale(20),
   },
   logoRing: {
-    width: 69,
-    height: 69,
-    borderRadius: 34.5,
-    backgroundColor: 'rgba(202,221,247,0.3)',
-    borderWidth: 2,
-    borderColor: 'rgba(113,166,238,0.3)',
+    width: scale(87),
+    height: scale(87),
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoCenter: {
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
   },
   appName: {
-    fontSize: 24,
+    fontSize: textScale(24),
     letterSpacing: -0.264,
     fontFamily: 'Inter-Medium',
     color: '#010000',
-    marginBottom: 8,
+    textAlign: 'center',
   },
-  buttonContainer: {
-    width: '100%',
-    gap: 8,
-    marginTop: 'auto',
-    paddingTop: 24,
+
+  cardsContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  minGap: {
+    height: verticalScale(28),
+  },
+  buttonsContainer: {
+    paddingHorizontal: scale(34),
+    paddingBottom: verticalScale(24),
+  },
+  buttonSpacer: {
+    height: verticalScale(12),
   },
 });

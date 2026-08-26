@@ -1,32 +1,20 @@
-import React from 'react';
-import Svg, { Path } from 'react-native-svg';
-
-/**
- * OnboardingBackgroundCurve - Large swoosh curve behind logo/top section
- * Exact SVG path data from Figma
- */
-export const OnboardingBackgroundCurve: React.FC = () => {
-  return (
-    <Svg
-      width={333}
-      height={506}
-      viewBox="0 0 333 506"
-      fill="none"
-      style={{
-        position: 'absolute',
-        top: -50,
-        right: -200,
-      }}
-    >
-      <Path
-        d="M161.79 497.554C139.213 490.949 112.092 468.212 89.7929 442.808C-18.0968 319.893 -3.20077 196.849 43.1009 160.184C185.143 47.7097 497.184 164.434 659.325 78.5553C687.203 63.7899 778.217 -17.6941 719.078 -95.3294C666.311 -164.602 612.751 -138.965 599.26 -119.849C553.614 -55.1666 574.887 73.5258 567.654 169.685C565.093 203.752 562.665 237.765 559.287 271.249C554.768 316.008 537.258 347.1 519.649 380.246"
-        stroke="#E4EAF1"
-        strokeOpacity={0.19}
-        strokeWidth={16}
-        strokeMiterlimit={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </Svg>
-  );
-};
+import * as React from "react"
+import Svg, { SvgProps, Path } from "react-native-svg"
+export const OnboardingBackgroundCurve = (props: SvgProps) => (
+  <Svg
+    width={800}
+    height={487}
+    fill="none"
+    {...props}
+  >
+    <Path
+      stroke="#E4EAF1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeMiterlimit={1.5}
+      strokeOpacity={0.19}
+      strokeWidth={16}
+      d="M161.79 497.554c-22.577-6.605-49.698-29.342-71.997-54.746C-18.097 319.893-3.201 196.849 43.1 160.184c142.042-112.474 454.083 4.25 616.224-81.629 27.878-14.765 118.892-96.25 59.753-173.884-52.767-69.273-106.327-43.636-119.818-24.52-45.646 64.682-24.373 193.375-31.606 289.534-2.561 34.067-4.989 68.08-8.367 101.564-4.519 44.759-22.029 75.851-39.638 108.997"
+    />
+  </Svg>
+)

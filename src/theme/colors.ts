@@ -8,6 +8,7 @@
 export const namedColors = {
   black: '#010000',
   btn: '#1C274C',
+  bottomIconInActive:'#141B34',
   gray: '#708892',
   white: '#FFFFFF',
 } as const;

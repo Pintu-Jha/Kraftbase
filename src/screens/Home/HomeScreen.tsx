@@ -11,7 +11,6 @@ import { HeaderRow } from '../../components/composite/HeaderRow';
 import { AiBuddyBanner } from '../../components/composite/AiBuddyBanner';
 import { FilterChip } from '../../components/ui/FilterChip';
 import { CourseCard } from '../../components/composite/CourseCard';
-import { BottomTabBar } from '../../components/composite/BottomTabBar';
 import { MOCK_COURSES } from '../../types/mockData';
 import type { HomeScreenProps } from '../../navigation/types';
 
@@ -23,16 +22,6 @@ const CATEGORIES = [
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [activeTab, setActiveTab] = useState('home');
-
-  const handleTabPress = (tabId: string) => {
-    setActiveTab(tabId);
-    if (tabId === 'lessons') {
-      navigation.navigate('Lessons', { courseId: '1', courseTitle: 'Letters' });
-    } else if (tabId === 'analytics') {
-      navigation.navigate('Analytics');
-    }
-  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -105,9 +94,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           ))}
         </ScrollView>
       </ScrollView>
-
-      {/* Bottom tab bar */}
-      <BottomTabBar activeTab={activeTab} onTabPress={handleTabPress} />
     </SafeAreaView>
   );
 };

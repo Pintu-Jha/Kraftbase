@@ -18,7 +18,6 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
       onPress={onPress}
       activeOpacity={0.9}
     >
-      {/* Icon badge + meta chips */}
       <View style={styles.topRow}>
         <Avatar size={48} backgroundColor="rgba(255,255,255,0.5)" emoji={course.imageEmoji || '🎨'} />
 
@@ -28,18 +27,15 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
         </View>
       </View>
 
-      {/* Illustration area */}
       <View style={styles.illustrationArea}>
         <Text style={styles.illustrationPlaceholder}>👩‍🎨</Text>
       </View>
 
-      {/* Category + Title */}
       <View style={styles.textSection}>
         <Text style={styles.category}>{course.category}</Text>
         <Text style={styles.title}>{course.title}</Text>
       </View>
 
-      {/* Start learning button with foggy blur effect */}
       <BlurCard
         intensity={65}
         tint="light"

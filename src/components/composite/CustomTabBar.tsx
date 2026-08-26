@@ -1,39 +1,40 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { BlurCard } from '../ui/BlurCard';
+import { colors } from '../../theme';
+import { HomeIcon, AnalyticsIcon, ProfileIcon, LernerIcon } from '../../assets/icons/TabBar';
+import { scale, verticalScale, moderateScale } from '../../theme/responsive';
 
 interface TabItem {
   id: string;
-  icon: keyof typeof Ionicons.glyphMap;
-  iconActive: keyof typeof Ionicons.glyphMap;
+  Icon: React.FC<{ color?: string }>;
 }
 
-interface BottomTabBarProps {
+interface CustomTabBarProps {
   activeTab: string;
   onTabPress: (tabId: string) => void;
 }
 
 const TABS: TabItem[] = [
-  { id: 'home', icon: 'home-outline', iconActive: 'home' },
-  { id: 'lessons', icon: 'book-outline', iconActive: 'book' },
-  { id: 'analytics', icon: 'stats-chart-outline', iconActive: 'stats-chart' },
-  { id: 'profile', icon: 'person-outline', iconActive: 'person' },
+  { id: 'home', Icon: HomeIcon },
+  { id: 'lessons', Icon: LernerIcon },
+  { id: 'analytics', Icon: AnalyticsIcon },
+  { id: 'profile', Icon: ProfileIcon },
 ];
 
-export const BottomTabBar: React.FC<BottomTabBarProps> = ({ activeTab, onTabPress }) => {
+export const CustomTabBar: React.FC<CustomTabBarProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
       <BlurCard
-        intensity={70}
+        intensity={21}
         tint="light"
-        borderRadius={56}
-        backgroundColor="rgba(255,255,255,0.6)"
-        style={styles.tabBarBlur}
+        borderRadius={100}
+        backgroundColor={colors.neutralB}
       >
         <View style={styles.tabBar}>
           {TABS.map(tab => {
             const isActive = activeTab === tab.id;
+            const IconComponent = tab.Icon;
             return (
               <TouchableOpacity
                 key={tab.id}
@@ -41,11 +42,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({ activeTab, onTabPres
                 onPress={() => onTabPress(tab.id)}
                 activeOpacity={0.8}
               >
-                <Ionicons
-                  name={isActive ? tab.iconActive : tab.icon}
-                  size={24}
-                  color={isActive ? '#FFFFFF' : '#708892'}
-                />
+                <IconComponent color={isActive ? colors.white : colors.bottomIconInActive} />
               </TouchableOpacity>
             );
           })}
@@ -58,32 +55,29 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({ activeTab, onTabPres
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 32,
+    bottom: verticalScale(32),
     left: 0,
     right: 0,
     alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-  tabBarBlur: {
-    overflow: 'visible',
+    paddingHorizontal: scale(20),
   },
   tabBar: {
     flexDirection: 'row',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    gap: 12,
+    paddingVertical: verticalScale(8),
+    paddingHorizontal: scale(12),
+    gap: scale(1),
   },
   tabButton: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+    width: scale(54),
+    height: scale(54),
+    borderRadius: moderateScale(56),
     alignItems: 'center',
     justifyContent: 'center',
   },
   tabButtonActive: {
-    backgroundColor: '#1C274C',
+    backgroundColor: colors.btn,
   },
   tabButtonInactive: {
-    backgroundColor: 'transparent',
+    backgroundColor: colors.white,
   },
 });

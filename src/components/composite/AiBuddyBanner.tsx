@@ -24,7 +24,6 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
 
   return (
     <View style={styles.card}>
-      {/* Top section: Robot + text + illustration */}
       <View style={styles.topSection}>
         <View style={styles.leftContent}>
           <Avatar size={44} backgroundColor="#3C425F" emoji="🤖" />
@@ -34,13 +33,11 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
           </View>
         </View>
 
-        {/* Illustration placeholder */}
         <View style={styles.illustrationArea}>
           <Text style={styles.illustrationPlaceholder}>👩‍🎓</Text>
         </View>
       </View>
 
-      {/* Bottom section: Today's pick + progress + play button with foggy blur */}
       <BlurCard
         intensity={50}
         tint="light"

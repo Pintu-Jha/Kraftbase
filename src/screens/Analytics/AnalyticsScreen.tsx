@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -14,6 +14,7 @@ import { MOCK_ANALYTICS } from '../../types/mockData';
 import type { AnalyticsScreenProps } from '../../navigation/types';
 
 export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) => {
+
   return (
     <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="dark-content" />
@@ -21,7 +22,6 @@ export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scroll}
       >
-        {/* Header */}
         <View style={styles.header}>
           <IconButton
             icon="arrow-back"
@@ -32,7 +32,6 @@ export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) 
           <Text style={styles.screenTitle}>Analytics</Text>
         </View>
 
-        {/* Streak card */}
         <View style={styles.card}>
           <StreakTracker
             days={MOCK_ANALYTICS.streakDays}
@@ -40,13 +39,11 @@ export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) 
           />
         </View>
 
-        {/* Skill progress card */}
         <View style={styles.skillCard}>
           <Text style={styles.cardTitle}>Skill Progress</Text>
           <SkillProgressChart data={MOCK_ANALYTICS.skillProgress} />
         </View>
 
-        {/* Weekly summary */}
         <View style={styles.weeklyCard}>
           <Text style={styles.cardTitle}>Weekly Activity</Text>
           <View style={styles.weeklyBars}>
