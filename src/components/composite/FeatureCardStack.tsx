@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { PersonalizedCardCurve } from '../../assets/illustrations/PersonalizedCardCurve';
+import KidOnApple from '../../assets/illustrations/KidOnApple';
 
 /**
  * FeatureCardStack - Three overlapping rotated cards for onboarding screen
@@ -40,7 +42,8 @@ export const FeatureCardStack: React.FC = () => {
           { backgroundColor: '#CADDF7' },
         ]}
       >
-        {/* TODO: Add decorative curved vector path here */}
+        {/* Decorative curved vector path */}
+        <PersonalizedCardCurve />
         
         {/* Main content */}
         <View style={styles.frontCardContent}>
@@ -64,12 +67,11 @@ export const FeatureCardStack: React.FC = () => {
               <View style={styles.dotInactive} />
             </View>
           </View>
+        </View>
 
-          {/* Right side - Illustration placeholder */}
-          <View style={styles.illustrationArea}>
-            {/* TODO: Add kid-on-apple illustration */}
-            <Text style={styles.illustrationPlaceholder}>🍎👦</Text>
-          </View>
+        {/* Kid on apple illustration - positioned absolute bottom right */}
+        <View style={styles.illustrationWrapper}>
+          <KidOnApple width={180} height={190} />
         </View>
       </View>
 
@@ -124,6 +126,7 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '-1.71deg' }],
     top: 150,
     padding: 20,
+    overflow: 'hidden',
   },
   cardLabel: {
     fontSize: 16,
@@ -137,12 +140,12 @@ const styles = StyleSheet.create({
   },
   frontCardContent: {
     flex: 1,
-    flexDirection: 'row',
-    gap: 12,
+    zIndex: 1,
   },
   textContent: {
     flex: 1,
     gap: 8,
+    maxWidth: 200,
   },
   titleRow: {
     flexDirection: 'row',
@@ -192,13 +195,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: 'rgba(28,39,76,0.2)',
   },
-  illustrationArea: {
-    width: 120,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  illustrationPlaceholder: {
-    fontSize: 60,
+  illustrationWrapper: {
+    position: 'absolute',
+    bottom: -30,
+    right: -20,
+    zIndex: 2,
   },
   emojiAccent1: {
     position: 'absolute',

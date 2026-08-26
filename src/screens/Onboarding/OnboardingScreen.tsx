@@ -7,10 +7,10 @@ import {
   StatusBar,
   ScrollView,
 } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '../../components/ui/Button';
 import { FeatureCardStack } from '../../components/composite/FeatureCardStack';
+import { OnboardingBackgroundCurve } from '../../assets/illustrations/OnboardingBackgroundCurve';
 import type { OnboardingScreenProps } from '../../navigation/types';
 
 export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }) => {
@@ -28,25 +28,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }
     <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="dark-content" />
       
-      {/* Decorative background curves */}
-      <Svg style={styles.bgCurve1}>
-        {/* TODO: Replace with exact SVG path data when provided */}
-        <Path
-          d="M-50,200 Q100,50 300,150 T600,100"
-          fill="none"
-          stroke="rgba(0,0,0,0.03)"
-          strokeWidth="80"
-        />
-      </Svg>
-      <Svg style={styles.bgCurve2}>
-        {/* TODO: Replace with exact SVG path data when provided */}
-        <Path
-          d="M500,-50 Q350,100 200,50 T-100,150"
-          fill="none"
-          stroke="rgba(0,0,0,0.03)"
-          strokeWidth="80"
-        />
-      </Svg>
+      {/* Decorative background curve */}
+      <OnboardingBackgroundCurve />
 
       <ScrollView
         contentContainerStyle={styles.scrollContent}
@@ -79,22 +62,6 @@ const styles = StyleSheet.create({
   safe: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-  },
-  bgCurve1: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    width: 600,
-    height: 400,
-    opacity: 0.5,
-  },
-  bgCurve2: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    width: 600,
-    height: 400,
-    opacity: 0.5,
   },
   scrollContent: {
     flexGrow: 1,

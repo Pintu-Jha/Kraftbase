@@ -1,0 +1,32 @@
+import React from 'react';
+import Svg, { Path } from 'react-native-svg';
+
+/**
+ * OnboardingBackgroundCurve - Large swoosh curve behind logo/top section
+ * Exact SVG path data from Figma
+ */
+export const OnboardingBackgroundCurve: React.FC = () => {
+  return (
+    <Svg
+      width={333}
+      height={506}
+      viewBox="0 0 333 506"
+      fill="none"
+      style={{
+        position: 'absolute',
+        top: -50,
+        right: -200,
+      }}
+    >
+      <Path
+        d="M161.79 497.554C139.213 490.949 112.092 468.212 89.7929 442.808C-18.0968 319.893 -3.20077 196.849 43.1009 160.184C185.143 47.7097 497.184 164.434 659.325 78.5553C687.203 63.7899 778.217 -17.6941 719.078 -95.3294C666.311 -164.602 612.751 -138.965 599.26 -119.849C553.614 -55.1666 574.887 73.5258 567.654 169.685C565.093 203.752 562.665 237.765 559.287 271.249C554.768 316.008 537.258 347.1 519.649 380.246"
+        stroke="#E4EAF1"
+        strokeOpacity={0.19}
+        strokeWidth={16}
+        strokeMiterlimit={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+};
