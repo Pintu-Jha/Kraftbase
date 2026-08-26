@@ -41,25 +41,24 @@ const styles = StyleSheet.create({
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 56,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    gap: 6,
+    borderRadius: 24,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    gap: 8,
   },
   chipActive: {
     backgroundColor: '#1C274C',
   },
   chipInactive: {
-    backgroundColor: 'rgba(244,243,243,0.7)',
-    borderWidth: 1,
-    borderColor: 'rgba(1,0,0,0.1)',
+    backgroundColor: 'transparent',
+    borderWidth: 0,
   },
   icon: {
-    fontSize: 14,
+    fontSize: 18,
   },
   label: {
-    fontSize: 13,
-    letterSpacing: -0.143,
+    fontSize: 15,
+    letterSpacing: -0.165,
     fontFamily: 'Inter-Medium',
   },
   labelActive: {
@@ -69,22 +68,22 @@ const styles = StyleSheet.create({
     color: '#708892',
   },
   badge: {
-    minWidth: 20,
-    height: 20,
-    borderRadius: 10,
+    minWidth: 24,
+    height: 24,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 6,
+    paddingHorizontal: 8,
   },
   badgeActive: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: 'rgba(255,255,255,0.25)',
   },
   badgeInactive: {
-    backgroundColor: 'rgba(28,39,76,0.1)',
+    backgroundColor: 'rgba(28,39,76,0.08)',
   },
   badgeText: {
-    fontSize: 11,
-    letterSpacing: -0.121,
+    fontSize: 12,
+    letterSpacing: -0.132,
     fontFamily: 'Inter-SemiBold',
   },
   badgeTextActive: {

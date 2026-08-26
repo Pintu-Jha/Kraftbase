@@ -35,7 +35,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({ activeTab, onTabPres
             >
               <Ionicons
                 name={isActive ? tab.iconActive : tab.icon}
-                size={22}
+                size={24}
                 color={isActive ? '#FFFFFF' : '#708892'}
               />
             </TouchableOpacity>
@@ -49,7 +49,7 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = ({ activeTab, onTabPres
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 32,
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -58,20 +58,20 @@ const styles = StyleSheet.create({
   tabBar: {
     flexDirection: 'row',
     backgroundColor: '#FFFFFF',
-    borderRadius: 64,
-    paddingVertical: 5,
-    paddingHorizontal: 8,
-    gap: 8,
+    borderRadius: 56,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    gap: 12,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 8,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.12,
+    shadowRadius: 16,
+    elevation: 12,
   },
   tabButton: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
   },

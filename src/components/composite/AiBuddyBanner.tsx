@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { ProgressRing } from '../ui/ProgressRing';
 
 interface AiBuddyBannerProps {
   progress: number; // 0–1
@@ -22,52 +21,54 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
 
   return (
     <View style={styles.card}>
-      {/* Top row: Robot + text + progress ring */}
-      <View style={styles.topRow}>
-        <View style={styles.robotAvatar}>
-          <Text style={styles.robotEmoji}>🤖</Text>
-        </View>
-
-        <View style={styles.textBlock}>
-          <Text style={styles.labelText}>Your A.i buddy</Text>
-          <Text style={styles.mainText}>You're learning great today!</Text>
-        </View>
-
-        <View style={styles.progressContainer}>
-          <ProgressRing size={56} strokeWidth={4} progress={progress} />
-          <View style={styles.progressTextOverlay}>
-            <Text style={styles.progressPercent}>{percentComplete}%</Text>
+      {/* Top section: Robot + text + illustration */}
+      <View style={styles.topSection}>
+        <View style={styles.leftContent}>
+          <View style={styles.robotBadge}>
+            <Text style={styles.robotEmoji}>🤖</Text>
           </View>
+          <View style={styles.textBlock}>
+            <Text style={styles.labelText}>Your A.i buddy</Text>
+            <Text style={styles.mainText}>You're learning great today!</Text>
+          </View>
+        </View>
+
+        {/* Illustration placeholder - would be actual illustration in production */}
+        <View style={styles.illustrationArea}>
+          <Text style={styles.illustrationPlaceholder}>👩‍🎓</Text>
         </View>
       </View>
 
-      {/* Bottom row: Today's pick info + play button */}
-      <View style={styles.bottomRow}>
+      {/* Bottom section: Today's pick + progress + play button */}
+      <View style={styles.bottomSection}>
         <View style={styles.pickInfo}>
-          <Text style={styles.pickLabel}>Today's pick: {category}</Text>
+          <Text style={styles.pickTitle}>Today's pick: {category}</Text>
 
           <View style={styles.metaRow}>
-            <View style={styles.metaChip}>
-              <Ionicons name="book-outline" size={12} color="#708892" />
+            <View style={styles.metaItem}>
+              <Ionicons name="book-outline" size={14} color="#708892" />
               <Text style={styles.metaText}>{lessonCount} lessons</Text>
             </View>
 
-            <View style={styles.metaChip}>
-              <Ionicons name="time-outline" size={12} color="#708892" />
+            <View style={styles.metaDivider} />
+
+            <View style={styles.metaItem}>
+              <Ionicons name="time-outline" size={14} color="#708892" />
               <Text style={styles.metaText}>{durationMinutes} min</Text>
             </View>
           </View>
-
-          <Text style={styles.completeText}>{percentComplete}% complete</Text>
         </View>
 
-        <TouchableOpacity
-          style={styles.playButton}
-          onPress={onPlayPress}
-          activeOpacity={0.8}
-        >
-          <Ionicons name="play" size={20} color="#FFFFFF" />
-        </TouchableOpacity>
+        <View style={styles.rightActions}>
+          <Text style={styles.progressText}>{percentComplete}% complete</Text>
+          <TouchableOpacity
+            style={styles.playButton}
+            onPress={onPlayPress}
+            activeOpacity={0.8}
+          >
+            <Ionicons name="play" size={24} color="#010000" />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -75,20 +76,26 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#EAF1F9',
+    backgroundColor: '#E8EFF5',
     borderRadius: 32,
     padding: 20,
-    gap: 16,
+    gap: 20,
   },
-  topRow: {
+  topSection: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
   },
-  robotAvatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+  leftContent: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    flex: 1,
+  },
+  robotBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     backgroundColor: '#3C425F',
     alignItems: 'center',
     justifyContent: 'center',
@@ -98,86 +105,86 @@ const styles = StyleSheet.create({
   },
   textBlock: {
     flex: 1,
-    gap: 2,
+    gap: 4,
   },
   labelText: {
-    fontSize: 12,
-    letterSpacing: -0.132,
+    fontSize: 13,
+    letterSpacing: -0.143,
     fontFamily: 'Inter-Regular',
     color: 'rgba(1,0,0,0.5)',
   },
   mainText: {
-    fontSize: 14,
-    letterSpacing: -0.154,
+    fontSize: 16,
+    letterSpacing: -0.176,
     fontFamily: 'Inter-SemiBold',
     color: '#010000',
   },
-  progressContainer: {
-    position: 'relative',
-    width: 56,
-    height: 56,
-  },
-  progressTextOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+  illustrationArea: {
+    width: 80,
+    height: 80,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  progressPercent: {
-    fontSize: 14,
-    letterSpacing: -0.154,
-    fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+  illustrationPlaceholder: {
+    fontSize: 48,
   },
-  bottomRow: {
+  bottomSection: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
   pickInfo: {
     flex: 1,
-    gap: 6,
+    gap: 8,
   },
-  pickLabel: {
-    fontSize: 13,
-    letterSpacing: -0.143,
-    fontFamily: 'Inter-Medium',
+  pickTitle: {
+    fontSize: 15,
+    letterSpacing: -0.165,
+    fontFamily: 'Inter-SemiBold',
     color: '#010000',
   },
   metaRow: {
     flexDirection: 'row',
-    gap: 8,
+    alignItems: 'center',
+    gap: 10,
   },
-  metaChip: {
+  metaItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.6)',
-    borderRadius: 56,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
     gap: 4,
   },
+  metaDivider: {
+    width: 1,
+    height: 12,
+    backgroundColor: 'rgba(1,0,0,0.1)',
+  },
   metaText: {
-    fontSize: 11,
-    letterSpacing: -0.121,
+    fontSize: 13,
+    letterSpacing: -0.143,
+    fontFamily: 'Inter-Regular',
+    color: '#708892',
+  },
+  rightActions: {
+    alignItems: 'flex-end',
+    gap: 8,
+  },
+  progressText: {
+    fontSize: 13,
+    letterSpacing: -0.143,
     fontFamily: 'Inter-Medium',
     color: '#708892',
   },
-  completeText: {
-    fontSize: 12,
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
-    color: '#7CA62B',
-  },
   playButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#161A34',
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
   },
 });

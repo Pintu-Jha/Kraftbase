@@ -15,40 +15,40 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
       onPress={onPress}
       activeOpacity={0.9}
     >
-      {/* Header: icon badge + meta chips */}
-      <View style={styles.header}>
+      {/* Icon badge + meta chips */}
+      <View style={styles.topRow}>
         <View style={styles.iconBadge}>
-          <Text style={styles.badgeEmoji}>{course.imageEmoji || '📚'}</Text>
+          <Text style={styles.badgeIcon}>{course.imageEmoji || '🎨'}</Text>
         </View>
+
         <View style={styles.metaChips}>
           <View style={styles.metaChip}>
-            <Ionicons name="book-outline" size={10} color="#708892" />
-            <Text style={styles.metaText}>{course.lessonCount}</Text>
+            <Ionicons name="book-outline" size={12} color="#708892" />
+            <Text style={styles.metaText}>{course.lessonCount} lessons</Text>
           </View>
+
           <View style={styles.metaChip}>
-            <Ionicons name="time-outline" size={10} color="#708892" />
-            <Text style={styles.metaText}>15m</Text>
+            <Ionicons name="time-outline" size={12} color="#708892" />
+            <Text style={styles.metaText}>10 min</Text>
           </View>
         </View>
       </View>
 
-      {/* Category label + Title */}
-      <View style={styles.titleSection}>
-        <Text style={[styles.category, { color: course.categoryColor }]}>{course.category}</Text>
+      {/* Illustration area */}
+      <View style={styles.illustrationArea}>
+        <Text style={styles.illustrationPlaceholder}>👩‍🎨</Text>
+      </View>
+
+      {/* Category + Title */}
+      <View style={styles.textSection}>
+        <Text style={styles.category}>{course.category}</Text>
         <Text style={styles.title}>{course.title}</Text>
       </View>
 
-      {/* Emoji illustration area */}
-      {course.imageEmoji ? (
-        <View style={styles.emojiContainer}>
-          <Text style={styles.emoji}>{course.imageEmoji}</Text>
-        </View>
-      ) : null}
-
-      {/* Start learning button with play icon */}
+      {/* Start learning button */}
       <TouchableOpacity style={styles.ctaButton} onPress={onPress} activeOpacity={0.8}>
-        <Ionicons name="play-circle" size={18} color="#073647" />
         <Text style={styles.ctaLabel}>Start learning</Text>
+        <Ionicons name="play" size={16} color="#010000" />
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -56,83 +56,91 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: 280,
-    height: 315,
+    width: 300,
+    height: 380,
     borderRadius: 32,
-    padding: 20,
-    justifyContent: 'space-between',
+    padding: 24,
     marginRight: 16,
   },
-  header: {
+  topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    marginBottom: 20,
   },
   iconBadge: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     backgroundColor: 'rgba(255,255,255,0.5)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  badgeEmoji: {
-    fontSize: 20,
+  badgeIcon: {
+    fontSize: 24,
   },
   metaChips: {
-    flexDirection: 'row',
     gap: 6,
+    alignItems: 'flex-end',
   },
   metaChip: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(244,243,243,0.6)',
-    borderRadius: 56,
-    paddingHorizontal: 8,
+    backgroundColor: 'rgba(255,255,255,0.5)',
+    borderRadius: 12,
+    paddingHorizontal: 10,
     paddingVertical: 4,
-    gap: 3,
-  },
-  metaText: {
-    fontSize: 10,
-    letterSpacing: -0.11,
-    fontFamily: 'Inter-Medium',
-    color: '#708892',
-  },
-  titleSection: {
     gap: 4,
   },
-  category: {
-    fontSize: 12,
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
+  metaText: {
+    fontSize: 11,
+    letterSpacing: -0.121,
+    fontFamily: 'Inter-Regular',
+    color: '#708892',
   },
-  title: {
-    fontSize: 28,
-    letterSpacing: -0.308,
-    fontFamily: 'Inter-SemiBold',
-    color: '#073647',
-  },
-  emojiContainer: {
+  illustrationArea: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  emoji: {
-    fontSize: 64,
+  illustrationPlaceholder: {
+    fontSize: 120,
+  },
+  textSection: {
+    gap: 4,
+    marginBottom: 16,
+  },
+  category: {
+    fontSize: 13,
+    letterSpacing: -0.143,
+    fontFamily: 'Inter-Regular',
+    color: 'rgba(1,0,0,0.5)',
+  },
+  title: {
+    fontSize: 24,
+    letterSpacing: -0.264,
+    fontFamily: 'Inter-SemiBold',
+    color: '#010000',
   },
   ctaButton: {
     flexDirection: 'row',
-    backgroundColor: 'rgba(255,255,255,0.38)',
-    borderRadius: 24,
-    paddingVertical: 12,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 56,
+    paddingVertical: 14,
+    paddingHorizontal: 24,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 6,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
   },
   ctaLabel: {
-    fontSize: 16,
-    letterSpacing: -0.176,
+    fontSize: 15,
+    letterSpacing: -0.165,
     fontFamily: 'Inter-SemiBold',
-    color: '#073647',
+    color: '#010000',
   },
 });

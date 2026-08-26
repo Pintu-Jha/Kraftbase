@@ -16,10 +16,9 @@ import { MOCK_COURSES } from '../../types/mockData';
 import type { HomeScreenProps } from '../../navigation/types';
 
 const CATEGORIES = [
-  { id: 'all', label: 'All', icon: '', count: 24 },
-  { id: 'letters', label: 'Letters', icon: '📚', count: 12 },
-  { id: 'colors', label: 'Colors', icon: '🎨', count: 8 },
-  { id: 'numbers', label: 'Numbers', icon: '🔢', count: 4 },
+  { id: 'all', label: 'All', icon: '', count: 12 },
+  { id: 'letters', label: 'Letters', icon: 'Aa', count: 3 },
+  { id: 'colors', label: 'Colors', icon: '🎨', count: 4 },
 ];
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
@@ -42,7 +41,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scroll}
       >
-        {/* Header with avatar, greeting, language selector, notification */}
+        {/* Header */}
         <HeaderRow
           userName="Max"
           greeting="Good Morning"
@@ -51,23 +50,23 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           onNotificationPress={() => {/* notifications */}}
         />
 
-        {/* AI Buddy banner with progress ring */}
-        <View style={styles.section}>
+        {/* AI Buddy Banner */}
+        <View style={styles.bannerSection}>
           <AiBuddyBanner
-            progress={0.12}
-            category="Letters"
-            lessonCount={5}
-            durationMinutes={15}
-            onPlayPress={() => navigation.navigate('Lessons', { courseId: '2', courseTitle: 'Letters' })}
+            progress={0.20}
+            category="Shapes"
+            lessonCount={12}
+            durationMinutes={10}
+            onPlayPress={() => navigation.navigate('Lessons', { courseId: '1', courseTitle: 'Shapes' })}
           />
         </View>
 
-        {/* Let's learn section header */}
+        {/* Let's learn header */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Let's learn</Text>
         </View>
 
-        {/* Category filter chips */}
+        {/* Category chips */}
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -119,29 +118,29 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flexGrow: 1,
-    paddingBottom: 100, // space for bottom tab bar
+    paddingBottom: 120, // space for bottom tab bar
   },
-  section: {
+  bannerSection: {
     paddingHorizontal: 20,
-    marginBottom: 24,
+    marginBottom: 32,
   },
   sectionHeader: {
     paddingHorizontal: 20,
-    marginBottom: 16,
+    marginBottom: 20,
   },
   sectionTitle: {
-    fontSize: 26,
-    letterSpacing: -0.286,
+    fontSize: 32,
+    letterSpacing: -0.352,
     fontFamily: 'Inter-SemiBold',
     color: '#010000',
   },
   categoryScroll: {
     paddingHorizontal: 20,
-    gap: 8,
-    marginBottom: 20,
+    gap: 12,
+    marginBottom: 24,
   },
   courseScroll: {
     paddingHorizontal: 20,
-    paddingBottom: 4,
+    paddingBottom: 8,
   },
 });
