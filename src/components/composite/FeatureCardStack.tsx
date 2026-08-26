@@ -71,7 +71,7 @@ export const FeatureCardStack: React.FC = () => {
 
         {/* Kid on apple illustration - positioned absolute bottom right */}
         <View style={styles.illustrationWrapper}>
-          <KidOnApple width={180} height={190} />
+          <KidOnApple />
         </View>
       </View>
 
@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '-1.71deg' }],
     top: 150,
     padding: 20,
-    overflow: 'hidden',
   },
   cardLabel: {
     fontSize: 16,
@@ -197,8 +196,8 @@ const styles = StyleSheet.create({
   },
   illustrationWrapper: {
     position: 'absolute',
-    bottom: -30,
-    right: -20,
+    bottom: -40,
+    right: -10,
     zIndex: 2,
   },
   emojiAccent1: {
