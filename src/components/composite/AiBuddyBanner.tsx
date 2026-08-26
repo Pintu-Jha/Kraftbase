@@ -40,12 +40,12 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
         </View>
       </View>
 
-      {/* Bottom section: Today's pick + progress + play button with blur */}
+      {/* Bottom section: Today's pick + progress + play button with foggy blur */}
       <BlurCard
-        intensity={18}
+        intensity={50}
         tint="light"
         borderRadius={24}
-        backgroundColor="rgba(255,255,255,0.3)"
+        backgroundColor="rgba(255,255,255,0.4)"
         style={styles.bottomBlurCard}
       >
         <View style={styles.bottomSection}>

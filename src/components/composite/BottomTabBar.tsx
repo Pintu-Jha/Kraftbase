@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { BlurCard } from '../ui/BlurCard';
 
 interface TabItem {
   id: string;
@@ -23,25 +24,33 @@ const TABS: TabItem[] = [
 export const BottomTabBar: React.FC<BottomTabBarProps> = ({ activeTab, onTabPress }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.tabBar}>
-        {TABS.map(tab => {
-          const isActive = activeTab === tab.id;
-          return (
-            <TouchableOpacity
-              key={tab.id}
-              style={[styles.tabButton, isActive ? styles.tabButtonActive : styles.tabButtonInactive]}
-              onPress={() => onTabPress(tab.id)}
-              activeOpacity={0.8}
-            >
-              <Ionicons
-                name={isActive ? tab.iconActive : tab.icon}
-                size={24}
-                color={isActive ? '#FFFFFF' : '#708892'}
-              />
-            </TouchableOpacity>
-          );
-        })}
-      </View>
+      <BlurCard
+        intensity={70}
+        tint="light"
+        borderRadius={56}
+        backgroundColor="rgba(255,255,255,0.6)"
+        style={styles.tabBarBlur}
+      >
+        <View style={styles.tabBar}>
+          {TABS.map(tab => {
+            const isActive = activeTab === tab.id;
+            return (
+              <TouchableOpacity
+                key={tab.id}
+                style={[styles.tabButton, isActive ? styles.tabButtonActive : styles.tabButtonInactive]}
+                onPress={() => onTabPress(tab.id)}
+                activeOpacity={0.8}
+              >
+                <Ionicons
+                  name={isActive ? tab.iconActive : tab.icon}
+                  size={24}
+                  color={isActive ? '#FFFFFF' : '#708892'}
+                />
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      </BlurCard>
     </View>
   );
 };
@@ -55,18 +64,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  tabBarBlur: {
+    overflow: 'visible',
+  },
   tabBar: {
     flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 56,
     paddingVertical: 8,
     paddingHorizontal: 12,
     gap: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.12,
-    shadowRadius: 16,
-    elevation: 12,
   },
   tabButton: {
     width: 56,

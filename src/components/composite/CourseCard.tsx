@@ -46,12 +46,12 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
         <Text style={styles.title}>{course.title}</Text>
       </View>
 
-      {/* Start learning button with blur and gradient */}
+      {/* Start learning button with foggy blur effect */}
       <BlurCard
-        intensity={45}
+        intensity={65}
         tint="light"
         borderRadius={56}
-        backgroundColor="rgba(255,255,255,0.6)"
+        backgroundColor="rgba(255,255,255,0.5)"
         style={styles.ctaBlurCard}
       >
         <TouchableOpacity style={styles.ctaButton} onPress={onPress} activeOpacity={0.8}>

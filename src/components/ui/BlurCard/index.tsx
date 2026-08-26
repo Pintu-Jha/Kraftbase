@@ -14,14 +14,13 @@ interface BlurCardProps {
 /**
  * FrostedCard / BlurCard component - reusable wrapper for glassmorphism effects
  * 
- * Maps Figma blur radius to expo-blur intensity:
- * - blur 3.5px  → intensity ~15-20
- * - blur 10.5px → intensity ~40-50
- * - blur 21.5px → intensity ~70-80
- * - blur 26px   → intensity ~85-90
+ * Maps Figma blur radius to expo-blur intensity (visually tuned):
+ * - Soft blur (course card button)  → intensity ~60-70
+ * - Medium blur (progress card)     → intensity ~40-50
+ * - Strong blur (tooltip badge)     → intensity ~80-90
  * 
  * Note: expo-blur intensity (0-100) does not map 1:1 to CSS px blur radius.
- * These values are visually tuned against Figma screenshots.
+ * These values are visually tuned to match the foggy/frosted glass effect.
  */
 export const BlurCard: React.FC<BlurCardProps> = ({
   children,
