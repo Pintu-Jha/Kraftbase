@@ -3,10 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   StatusBar,
   ScrollView,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LessonListItem } from '../../components/composite/LessonListItem';
 import { BlurCard } from '../../components/ui/BlurCard';
 import { IconButton } from '../../components/ui/IconButton';

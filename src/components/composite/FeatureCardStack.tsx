@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   illustrationWrapper: {
     position: 'absolute',
-    bottom: -40,
+    bottom: -30,
     right: -10,
     zIndex: 2,
   },

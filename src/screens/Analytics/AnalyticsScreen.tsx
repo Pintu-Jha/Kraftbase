@@ -3,10 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   StatusBar,
   ScrollView,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { IconButton } from '../../components/ui/IconButton';
 import { StreakTracker } from '../../components/composite/StreakTracker';
 import { SkillProgressChart } from '../../components/composite/SkillProgressChart';

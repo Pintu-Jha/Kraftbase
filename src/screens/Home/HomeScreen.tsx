@@ -3,10 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   StatusBar,
   ScrollView,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { HeaderRow } from '../../components/composite/HeaderRow';
 import { AiBuddyBanner } from '../../components/composite/AiBuddyBanner';
 import { FilterChip } from '../../components/ui/FilterChip';
