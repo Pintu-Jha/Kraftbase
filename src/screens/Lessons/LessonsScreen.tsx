@@ -6,10 +6,10 @@ import {
   SafeAreaView,
   StatusBar,
   ScrollView,
-  TouchableOpacity,
 } from 'react-native';
 import { LessonListItem } from '../../components/composite/LessonListItem';
 import { BlurCard } from '../../components/ui/BlurCard';
+import { IconButton } from '../../components/ui/IconButton';
 import { MOCK_LESSONS } from '../../types/mockData';
 import type { LessonsScreenProps } from '../../navigation/types';
 
@@ -22,19 +22,21 @@ export const LessonsScreen: React.FC<LessonsScreenProps> = ({ navigation, route 
 
       {/* Hero section with blur card AI banner */}
       <View style={styles.hero}>
-        <TouchableOpacity style={styles.backButtonWrapper} onPress={() => navigation.goBack()}>
-          <BlurCard
-            intensity={75}
-            tint="light"
-            borderRadius={28}
-            backgroundColor="rgba(255,255,255,0.15)"
-            style={styles.backButtonBlur}
-          >
-            <View style={styles.backButton}>
-              <Text style={styles.backArrow}>←</Text>
-            </View>
-          </BlurCard>
-        </TouchableOpacity>
+        <BlurCard
+          intensity={75}
+          tint="light"
+          borderRadius={28}
+          backgroundColor="rgba(255,255,255,0.15)"
+          style={styles.backButtonBlur}
+        >
+          <IconButton
+            icon="arrow-back"
+            size={48}
+            iconSize={20}
+            backgroundColor="transparent"
+            onPress={() => navigation.goBack()}
+          />
+        </BlurCard>
         <Text style={styles.heroTitle}>Learn {courseTitle} with fun sounds</Text>
         <Text style={styles.heroSubtitle}>{MOCK_LESSONS.length} lessons available</Text>
       </View>
@@ -79,25 +81,10 @@ const styles = StyleSheet.create({
     paddingBottom: 28,
     gap: 8,
   },
-  backButtonWrapper: {
-    width: 48,
-    height: 48,
-    marginBottom: 8,
-  },
   backButtonBlur: {
     width: 48,
     height: 48,
-  },
-  backButton: {
-    width: 48,
-    height: 48,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backArrow: {
-    fontSize: 20,
-    color: '#010000',
-    fontFamily: 'Inter-Medium',
+    marginBottom: 8,
   },
   heroTitle: {
     fontSize: 25,

@@ -1,33 +1,43 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ViewStyle } from 'react-native';
+import { View, Text, Image, StyleSheet, ViewStyle, ImageSourcePropType } from 'react-native';
 
 interface AvatarProps {
   size?: number;
   backgroundColor?: string;
   initials?: string;
-  imageUri?: string;
+  source?: ImageSourcePropType;
+  emoji?: string;
   style?: ViewStyle;
 }
 
+/**
+ * Avatar - Circular image/initials/emoji container
+ * Used for: user avatars, robot buddy icons, illustration placeholders
+ */
 export const Avatar: React.FC<AvatarProps> = ({
-  size = 47,
+  size = 48,
   backgroundColor = '#3C425F',
   initials,
-  imageUri,
+  source,
+  emoji,
   style,
 }) => {
+  const borderRadius = size / 2;
+
   return (
     <View
       style={[
         styles.container,
-        { width: size, height: size, borderRadius: size / 2, backgroundColor },
+        { width: size, height: size, borderRadius, backgroundColor },
         style,
       ]}
     >
-      {imageUri ? (
-        <Image source={{ uri: imageUri }} style={styles.image} />
+      {source ? (
+        <Image source={source} style={styles.image} />
+      ) : emoji ? (
+        <Text style={[styles.emoji, { fontSize: size * 0.5 }]}>{emoji}</Text>
       ) : initials ? (
-        <Text style={styles.initials}>{initials}</Text>
+        <Text style={[styles.initials, { fontSize: size * 0.36 }]}>{initials}</Text>
       ) : null}
     </View>
   );
@@ -43,9 +53,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  emoji: {
+    lineHeight: undefined, // Let emoji size naturally
+  },
   initials: {
     color: '#FFFFFF',
-    fontSize: 16,
     fontFamily: 'Inter-SemiBold',
     letterSpacing: -0.176,
   },

@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurCard } from '../ui/BlurCard';
+import { Avatar } from '../ui/Avatar';
+import { Chip } from '../ui/Chip';
 import type { Course } from '../../types/index';
 
 interface CourseCardProps {
@@ -18,20 +20,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
     >
       {/* Icon badge + meta chips */}
       <View style={styles.topRow}>
-        <View style={styles.iconBadge}>
-          <Text style={styles.badgeIcon}>{course.imageEmoji || '🎨'}</Text>
-        </View>
+        <Avatar size={48} backgroundColor="rgba(255,255,255,0.5)" emoji={course.imageEmoji || '🎨'} />
 
         <View style={styles.metaChips}>
-          <View style={styles.metaChip}>
-            <Ionicons name="book-outline" size={12} color="#708892" />
-            <Text style={styles.metaText}>{course.lessonCount} lessons</Text>
-          </View>
-
-          <View style={styles.metaChip}>
-            <Ionicons name="time-outline" size={12} color="#708892" />
-            <Text style={styles.metaText}>10 min</Text>
-          </View>
+          <Chip icon="book-outline" iconSize={12} label={`${course.lessonCount} lessons`} variant="frosted" />
+          <Chip icon="time-outline" iconSize={12} label="10 min" variant="frosted" />
         </View>
       </View>
 
@@ -77,35 +70,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 20,
   },
-  iconBadge: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: 'rgba(255,255,255,0.5)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  badgeIcon: {
-    fontSize: 24,
-  },
   metaChips: {
     gap: 6,
     alignItems: 'flex-end',
-  },
-  metaChip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.5)',
-    borderRadius: 12,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    gap: 4,
-  },
-  metaText: {
-    fontSize: 11,
-    letterSpacing: -0.121,
-    fontFamily: 'Inter-Regular',
-    color: '#708892',
   },
   illustrationArea: {
     flex: 1,

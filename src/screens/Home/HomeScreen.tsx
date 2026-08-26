@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { HeaderRow } from '../../components/composite/HeaderRow';
 import { AiBuddyBanner } from '../../components/composite/AiBuddyBanner';
-import { CategoryChip } from '../../components/composite/CategoryChip';
+import { FilterChip } from '../../components/ui/FilterChip';
 import { CourseCard } from '../../components/composite/CourseCard';
 import { BottomTabBar } from '../../components/composite/BottomTabBar';
 import { MOCK_COURSES } from '../../types/mockData';
@@ -73,12 +73,13 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
           contentContainerStyle={styles.categoryScroll}
         >
           {CATEGORIES.map(cat => (
-            <CategoryChip
+            <FilterChip
               key={cat.id}
               label={cat.label}
               icon={cat.icon}
               count={cat.count}
-              isActive={activeCategory === cat.id}
+              variant="withIcon"
+              active={activeCategory === cat.id}
               onPress={() => setActiveCategory(cat.id)}
             />
           ))}

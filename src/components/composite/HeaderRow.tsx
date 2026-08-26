@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Avatar } from '../ui/Avatar';
+import { IconButton } from '../ui/IconButton';
 
 interface HeaderRowProps {
   userName: string;
   greeting: string;
-  avatarUri?: string;
+  avatarEmoji?: string;
   onLanguagePress?: () => void;
   onNotificationPress?: () => void;
   hasNotifications?: boolean;
@@ -14,6 +16,7 @@ interface HeaderRowProps {
 export const HeaderRow: React.FC<HeaderRowProps> = ({
   userName,
   greeting,
+  avatarEmoji = '👨‍💼',
   onLanguagePress,
   onNotificationPress,
   hasNotifications = false,
@@ -22,10 +25,7 @@ export const HeaderRow: React.FC<HeaderRowProps> = ({
     <View style={styles.container}>
       {/* Left: Avatar + greeting */}
       <View style={styles.leftSection}>
-        <View style={styles.avatar}>
-          {/* Placeholder illustration - in real app would be Image component */}
-          <Text style={styles.avatarEmoji}>👨‍💼</Text>
-        </View>
+        <Avatar size={56} backgroundColor="#4A9B9F" emoji={avatarEmoji} />
         <View style={styles.greetingBlock}>
           <Text style={styles.helloText}>Hello {userName} 👋</Text>
           <Text style={styles.greetingText}>{greeting}</Text>
@@ -44,14 +44,15 @@ export const HeaderRow: React.FC<HeaderRowProps> = ({
           <Ionicons name="chevron-down" size={14} color="#708892" />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.notifButton}
-          onPress={onNotificationPress}
-          activeOpacity={0.8}
-        >
-          <Ionicons name="notifications-outline" size={20} color="#010000" />
+        <View style={styles.notifContainer}>
+          <IconButton
+            icon="notifications-outline"
+            size={40}
+            iconSize={20}
+            onPress={onNotificationPress}
+          />
           {hasNotifications ? <View style={styles.redDot} /> : null}
-        </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -70,18 +71,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-  },
-  avatar: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: '#4A9B9F',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-  },
-  avatarEmoji: {
-    fontSize: 28,
   },
   greetingBlock: {
     gap: 2,
@@ -121,13 +110,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
     color: '#708892',
   },
-  notifButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(240,239,239,0.4)',
-    alignItems: 'center',
-    justifyContent: 'center',
+  notifContainer: {
+    position: 'relative',
   },
   redDot: {
     position: 'absolute',

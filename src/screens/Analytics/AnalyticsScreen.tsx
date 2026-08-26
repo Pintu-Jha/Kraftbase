@@ -6,8 +6,8 @@ import {
   SafeAreaView,
   StatusBar,
   ScrollView,
-  TouchableOpacity,
 } from 'react-native';
+import { IconButton } from '../../components/ui/IconButton';
 import { StreakTracker } from '../../components/composite/StreakTracker';
 import { SkillProgressChart } from '../../components/composite/SkillProgressChart';
 import { MOCK_ANALYTICS } from '../../types/mockData';
@@ -23,9 +23,12 @@ export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) 
       >
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-            <Text style={styles.backArrow}>←</Text>
-          </TouchableOpacity>
+          <IconButton
+            icon="arrow-back"
+            size={48}
+            iconSize={20}
+            onPress={() => navigation.goBack()}
+          />
           <Text style={styles.screenTitle}>Analytics</Text>
         </View>
 
@@ -88,19 +91,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 16,
     marginBottom: 8,
-  },
-  backButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 28,
-    backgroundColor: 'rgba(240,239,239,0.4)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backArrow: {
-    fontSize: 20,
-    color: '#010000',
-    fontFamily: 'Inter-Medium',
   },
   screenTitle: {
     fontSize: 26,
