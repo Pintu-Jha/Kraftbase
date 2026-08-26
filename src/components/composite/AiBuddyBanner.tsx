@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { BlurCard } from '../ui/BlurCard';
 
 interface AiBuddyBannerProps {
   progress: number; // 0–1
@@ -39,37 +40,45 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
         </View>
       </View>
 
-      {/* Bottom section: Today's pick + progress + play button */}
-      <View style={styles.bottomSection}>
-        <View style={styles.pickInfo}>
-          <Text style={styles.pickTitle}>Today's pick: {category}</Text>
+      {/* Bottom section: Today's pick + progress + play button with blur */}
+      <BlurCard
+        intensity={18}
+        tint="light"
+        borderRadius={24}
+        backgroundColor="rgba(255,255,255,0.3)"
+        style={styles.bottomBlurCard}
+      >
+        <View style={styles.bottomSection}>
+          <View style={styles.pickInfo}>
+            <Text style={styles.pickTitle}>Today's pick: {category}</Text>
 
-          <View style={styles.metaRow}>
-            <View style={styles.metaItem}>
-              <Ionicons name="book-outline" size={14} color="#708892" />
-              <Text style={styles.metaText}>{lessonCount} lessons</Text>
-            </View>
+            <View style={styles.metaRow}>
+              <View style={styles.metaItem}>
+                <Ionicons name="book-outline" size={14} color="#708892" />
+                <Text style={styles.metaText}>{lessonCount} lessons</Text>
+              </View>
 
-            <View style={styles.metaDivider} />
+              <View style={styles.metaDivider} />
 
-            <View style={styles.metaItem}>
-              <Ionicons name="time-outline" size={14} color="#708892" />
-              <Text style={styles.metaText}>{durationMinutes} min</Text>
+              <View style={styles.metaItem}>
+                <Ionicons name="time-outline" size={14} color="#708892" />
+                <Text style={styles.metaText}>{durationMinutes} min</Text>
+              </View>
             </View>
           </View>
-        </View>
 
-        <View style={styles.rightActions}>
-          <Text style={styles.progressText}>{percentComplete}% complete</Text>
-          <TouchableOpacity
-            style={styles.playButton}
-            onPress={onPlayPress}
-            activeOpacity={0.8}
-          >
-            <Ionicons name="play" size={24} color="#010000" />
-          </TouchableOpacity>
+          <View style={styles.rightActions}>
+            <Text style={styles.progressText}>{percentComplete}% complete</Text>
+            <TouchableOpacity
+              style={styles.playButton}
+              onPress={onPlayPress}
+              activeOpacity={0.8}
+            >
+              <Ionicons name="play" size={24} color="#010000" />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </BlurCard>
     </View>
   );
 };
@@ -79,7 +88,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8EFF5',
     borderRadius: 32,
     padding: 20,
-    gap: 20,
+    gap: 16,
+  },
+  bottomBlurCard: {
+    marginHorizontal: 0,
   },
   topSection: {
     flexDirection: 'row',
@@ -132,6 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
+    padding: 16,
   },
   pickInfo: {
     flex: 1,

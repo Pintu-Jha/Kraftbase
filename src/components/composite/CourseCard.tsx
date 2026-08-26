@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { BlurCard } from '../ui/BlurCard';
 import type { Course } from '../../types/index';
 
 interface CourseCardProps {
@@ -45,11 +46,19 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
         <Text style={styles.title}>{course.title}</Text>
       </View>
 
-      {/* Start learning button */}
-      <TouchableOpacity style={styles.ctaButton} onPress={onPress} activeOpacity={0.8}>
-        <Text style={styles.ctaLabel}>Start learning</Text>
-        <Ionicons name="play" size={16} color="#010000" />
-      </TouchableOpacity>
+      {/* Start learning button with blur and gradient */}
+      <BlurCard
+        intensity={45}
+        tint="light"
+        borderRadius={56}
+        backgroundColor="rgba(255,255,255,0.6)"
+        style={styles.ctaBlurCard}
+      >
+        <TouchableOpacity style={styles.ctaButton} onPress={onPress} activeOpacity={0.8}>
+          <Text style={styles.ctaLabel}>Start learning</Text>
+          <Ionicons name="play" size={16} color="#010000" />
+        </TouchableOpacity>
+      </BlurCard>
     </TouchableOpacity>
   );
 };
@@ -122,20 +131,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-SemiBold',
     color: '#010000',
   },
+  ctaBlurCard: {
+    marginHorizontal: 0,
+  },
   ctaButton: {
     flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
     borderRadius: 56,
     paddingVertical: 14,
     paddingHorizontal: 24,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 3,
   },
   ctaLabel: {
     fontSize: 15,

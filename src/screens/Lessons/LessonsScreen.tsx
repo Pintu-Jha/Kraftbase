@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { LessonListItem } from '../../components/composite/LessonListItem';
+import { BlurCard } from '../../components/ui/BlurCard';
 import { MOCK_LESSONS } from '../../types/mockData';
 import type { LessonsScreenProps } from '../../navigation/types';
 
@@ -19,10 +20,20 @@ export const LessonsScreen: React.FC<LessonsScreenProps> = ({ navigation, route 
     <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="dark-content" />
 
-      {/* Hero section */}
+      {/* Hero section with blur card AI banner */}
       <View style={styles.hero}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Text style={styles.backArrow}>←</Text>
+        <TouchableOpacity style={styles.backButtonWrapper} onPress={() => navigation.goBack()}>
+          <BlurCard
+            intensity={75}
+            tint="light"
+            borderRadius={28}
+            backgroundColor="rgba(255,255,255,0.15)"
+            style={styles.backButtonBlur}
+          >
+            <View style={styles.backButton}>
+              <Text style={styles.backArrow}>←</Text>
+            </View>
+          </BlurCard>
         </TouchableOpacity>
         <Text style={styles.heroTitle}>Learn {courseTitle} with fun sounds</Text>
         <Text style={styles.heroSubtitle}>{MOCK_LESSONS.length} lessons available</Text>
@@ -68,14 +79,20 @@ const styles = StyleSheet.create({
     paddingBottom: 28,
     gap: 8,
   },
+  backButtonWrapper: {
+    width: 48,
+    height: 48,
+    marginBottom: 8,
+  },
+  backButtonBlur: {
+    width: 48,
+    height: 48,
+  },
   backButton: {
     width: 48,
     height: 48,
-    borderRadius: 28,
-    backgroundColor: 'rgba(240,239,239,0.4)',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 8,
   },
   backArrow: {
     fontSize: 20,
