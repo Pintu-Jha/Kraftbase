@@ -7,62 +7,68 @@ import {
   StatusBar,
   ScrollView,
 } from 'react-native';
-import { Button } from '../../components/ui/Button/index';
+import Svg, { Path } from 'react-native-svg';
+import { Ionicons } from '@expo/vector-icons';
+import { Button } from '../../components/ui/Button';
 import { FeatureCardStack } from '../../components/composite/FeatureCardStack';
 import type { OnboardingScreenProps } from '../../navigation/types';
 
 export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }) => {
+  const handleSignUp = () => {
+    // No real auth - navigate directly to Home per plan assumptions
+    navigation.navigate('Home');
+  };
+
+  const handleLogIn = () => {
+    // No real auth - navigate directly to Home per plan assumptions
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="dark-content" />
+      
+      {/* Decorative background curves */}
+      <Svg style={styles.bgCurve1}>
+        {/* TODO: Replace with exact SVG path data when provided */}
+        <Path
+          d="M-50,200 Q100,50 300,150 T600,100"
+          fill="none"
+          stroke="rgba(0,0,0,0.03)"
+          strokeWidth="80"
+        />
+      </Svg>
+      <Svg style={styles.bgCurve2}>
+        {/* TODO: Replace with exact SVG path data when provided */}
+        <Path
+          d="M500,-50 Q350,100 200,50 T-100,150"
+          fill="none"
+          stroke="rgba(0,0,0,0.03)"
+          strokeWidth="80"
+        />
+      </Svg>
+
       <ScrollView
-        contentContainerStyle={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
         {/* Logo */}
         <View style={styles.logoContainer}>
           <View style={styles.logoRing}>
-            <Text style={styles.logoEmoji}>🎓</Text>
-          </View>
-          <Text style={styles.logoText}>SmartLearn</Text>
-        </View>
-
-        {/* Heading */}
-        <View style={styles.headingContainer}>
-          <Text style={styles.headingPersonalized}>Personalized</Text>
-          <Text style={styles.headingLearning}>Learning</Text>
-          <Text style={styles.headingSubtitle}>
-            A smart way to learn, track and grow every day.
-          </Text>
-        </View>
-
-        {/* Feature card stack */}
-        <View style={styles.cardStackContainer}>
-          <FeatureCardStack />
-        </View>
-
-        {/* Feature tags */}
-        <View style={styles.tagsRow}>
-          <View style={[styles.featureTag, styles.featureTagPink]}>
-            <Text style={styles.featureTagText}>🎯 Personalized</Text>
-          </View>
-          <View style={[styles.featureTag, styles.featureTagLime]}>
-            <Text style={styles.featureTagText}>🔊 Fun Sounds</Text>
-          </View>
-          <View style={[styles.featureTag, styles.featureTagBlue]}>
-            <Text style={styles.featureTagText}>📈 Progress</Text>
+            <Ionicons name="book-outline" size={32} color="#71A6EE" />
           </View>
         </View>
 
-        {/* CTA buttons */}
-        <View style={styles.buttonsContainer}>
-          <Button label="Sign up" onPress={() => navigation.replace('Home')} variant="filled" />
-          <Button
-            label="Log in"
-            onPress={() => navigation.replace('Home')}
-            variant="outline"
-            style={styles.loginButton}
-          />
+        {/* App name */}
+        <Text style={styles.appName}>SmartLearn</Text>
+
+        {/* Tilted feature card stack */}
+        <FeatureCardStack />
+
+        {/* Buttons */}
+        <View style={styles.buttonContainer}>
+          <Button label="Sign up" variant="filled" onPress={handleSignUp} />
+          <Button label="Log in" variant="outline" onPress={handleLogIn} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -74,93 +80,53 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  scroll: {
+  bgCurve1: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    width: 600,
+    height: 400,
+    opacity: 0.5,
+  },
+  bgCurve2: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: 600,
+    height: 400,
+    opacity: 0.5,
+  },
+  scrollContent: {
     flexGrow: 1,
-    paddingHorizontal: 24,
-    paddingTop: 16,
+    paddingHorizontal: 20,
+    paddingTop: 40,
     paddingBottom: 32,
+    alignItems: 'center',
   },
   logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    marginBottom: 32,
+    marginBottom: 16,
   },
   logoRing: {
     width: 69,
     height: 69,
-    borderRadius: 999,
-    backgroundColor: '#1C274C',
+    borderRadius: 34.5,
+    backgroundColor: 'rgba(202,221,247,0.3)',
+    borderWidth: 2,
+    borderColor: 'rgba(113,166,238,0.3)',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logoEmoji: {
-    fontSize: 32,
-  },
-  logoText: {
+  appName: {
     fontSize: 24,
     letterSpacing: -0.264,
-    fontFamily: 'Inter-SemiBold',
-    color: '#010000',
-  },
-  headingContainer: {
-    marginBottom: 32,
-    gap: 4,
-  },
-  headingPersonalized: {
-    fontSize: 30,
-    letterSpacing: -0.33,
-    fontFamily: 'Inter-SemiBold',
-    color: '#010000',
-  },
-  headingLearning: {
-    fontSize: 27,
-    letterSpacing: -0.297,
-    fontFamily: 'Inter-SemiBold',
-    color: '#708892',
-  },
-  headingSubtitle: {
-    fontSize: 14,
-    letterSpacing: -0.154,
-    fontFamily: 'Inter-Regular',
-    color: 'rgba(1,0,0,0.5)',
-    marginTop: 8,
-  },
-  cardStackContainer: {
-    alignItems: 'center',
-    marginBottom: 24,
-  },
-  tagsRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginBottom: 32,
-  },
-  featureTag: {
-    borderRadius: 20,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-  },
-  featureTagPink: {
-    backgroundColor: '#F2D1D0',
-  },
-  featureTagLime: {
-    backgroundColor: '#DFF28A',
-  },
-  featureTagBlue: {
-    backgroundColor: '#CADDF7',
-  },
-  featureTagText: {
-    fontSize: 13,
-    letterSpacing: -0.143,
     fontFamily: 'Inter-Medium',
     color: '#010000',
+    marginBottom: 8,
   },
-  buttonsContainer: {
-    gap: 12,
+  buttonContainer: {
+    width: '100%',
+    gap: 8,
     marginTop: 'auto',
-  },
-  loginButton: {
-    marginTop: 0,
+    paddingTop: 24,
   },
 });
