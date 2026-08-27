@@ -1,12 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
-import { Badge } from '../Badge';
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, View } from 'react-native';
+import { SvgProps } from 'react-native-svg';
 
 type FilterChipVariant = 'withIcon' | 'textOnly';
 
 interface FilterChipProps {
   label: string;
-  icon?: string; // Emoji or text icon
+  icon?: React.FC<SvgProps> | string;
   count?: number;
   variant?: FilterChipVariant;
   active?: boolean;
@@ -14,11 +14,10 @@ interface FilterChipProps {
   style?: ViewStyle;
 }
 
-/**
- * FilterChip - Interactive filter/category chip with optional icon and count badge
- * Used for: Home category filters, Analytics view filters
- * Variants: withIcon (Home screen), textOnly (Analytics tabs)
- */
+const ACTIVE_COLOR = '#FFFFFF';
+const INACTIVE_COLOR = '#1C274C';
+const ACTIVE_BG = '#1C274C';
+
 export const FilterChip: React.FC<FilterChipProps> = ({
   label,
   icon,
@@ -28,6 +27,11 @@ export const FilterChip: React.FC<FilterChipProps> = ({
   onPress,
   style,
 }) => {
+  const isIconComponent = !!icon && typeof icon !== 'string';
+  const IconComponent = isIconComponent ? (icon as React.FC<SvgProps>) : null;
+  const iconColor = active ? ACTIVE_COLOR : INACTIVE_COLOR;
+  const showIcon = !!icon && variant === 'withIcon';
+
   return (
     <TouchableOpacity
       style={[
@@ -38,14 +42,37 @@ export const FilterChip: React.FC<FilterChipProps> = ({
       onPress={onPress}
       activeOpacity={0.8}
     >
-      {icon && variant === 'withIcon' ? (
-        <Text style={styles.icon}>{icon}</Text>
-      ) : null}
-      <Text style={[styles.label, active ? styles.labelActive : styles.labelInactive]}>
-        {label}
-      </Text>
+      {showIcon ? (
+        <View style={styles.content}>
+          <View style={styles.iconWrap}>
+            {IconComponent ? (
+              <IconComponent
+                width={18}
+                height={18}
+                fill={iconColor}
+                color={iconColor}
+                stroke={iconColor}
+              />
+            ) : (
+              <Text style={[styles.icon, { color: iconColor }]}>{icon as string}</Text>
+            )}
+          </View>
+          <Text style={[styles.label, active ? styles.labelActive : styles.labelInactive]}>
+            {label}
+          </Text>
+        </View>
+      ) : (
+        <Text style={[styles.label, active ? styles.labelActive : styles.labelInactive]}>
+          {label}
+        </Text>
+      )}
+
       {count !== undefined ? (
-        <Badge value={count} active={active} size={24} />
+        <View style={active ? styles.countCircleActive : styles.countPillInactive}>
+          <Text style={[styles.countText, active ? styles.countTextActive : styles.countTextInactive]}>
+            {count}
+          </Text>
+        </View>
       ) : null}
     </TouchableOpacity>
   );
@@ -55,16 +82,29 @@ const styles = StyleSheet.create({
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 24,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    gap: 8,
+    borderRadius: 56,
+    height: 44,
+    paddingRight: 5,
+    gap: 12,
   },
   chipActive: {
-    backgroundColor: '#1C274C',
+    backgroundColor: ACTIVE_BG,
+    paddingLeft: 17,
   },
   chipInactive: {
     backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#0000000D',
+    paddingLeft: 8,
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  iconWrap: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   icon: {
     fontSize: 18,
@@ -75,9 +115,38 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
   },
   labelActive: {
-    color: '#FFFFFF',
+    color: ACTIVE_COLOR,
   },
   labelInactive: {
-    color: '#708892',
+    color: INACTIVE_COLOR,
+  },
+  countCircleActive: {
+    width: 34,
+    height: 34,
+    borderRadius: 40,
+    padding: 8,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  countPillInactive: {
+    width: 34,
+    height: 34,
+    borderRadius: 40,
+    padding: 8,
+    backgroundColor: '#F4F3F380',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  countText: {
+    fontSize: 12,
+    letterSpacing: -0.132,
+    fontFamily: 'Inter-Medium',
+  },
+  countTextActive: {
+    color: ACTIVE_BG,
+  },
+  countTextInactive: {
+    color: INACTIVE_COLOR,
   },
 });

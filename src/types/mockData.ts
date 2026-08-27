@@ -1,27 +1,28 @@
-import type { Course, Lesson, AnalyticsData } from './index';
+import type { Course, Lesson, AnalyticsData, CourseType } from './index';
 
 export const MOCK_COURSES: Course[] = [
   {
     id: '1',
     title: 'Colors',
-    category: 'Art & Design',
+    subTitle:'Learn colors with objects',
     backgroundColor: '#E5CDFF',
     categoryColor: '#9881B3',
     lessonCount: 12,
     completedCount: 4,
-    imageEmoji: '🎨',
+    type: 'colors' as CourseType,
   },
   {
     id: '2',
     title: 'Letters',
-    category: 'Language',
+    subTitle:'Learn ABC with fun sounds',
     backgroundColor: '#E1F18C',
     categoryColor: '#708892',
     lessonCount: 26,
     completedCount: 5,
-    imageEmoji: '📚',
+    type: 'letters' as CourseType,
   },
 ];
+
 
 export const MOCK_LESSONS: Lesson[] = [
   { id: '1', title: 'A for Apple', backgroundColor: '#F4EFD7', status: 'completed', progress: 1 },

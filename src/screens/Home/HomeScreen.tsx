@@ -13,11 +13,13 @@ import { FilterChip } from '../../components/ui/FilterChip';
 import { CourseCard } from '../../components/composite/CourseCard';
 import { MOCK_COURSES } from '../../types/mockData';
 import type { HomeScreenProps } from '../../navigation/types';
+import { Letters } from '../../assets/icons/svg/Letters';
+import { Colors } from '../../assets/icons/svg/Colors';
 
 const CATEGORIES = [
   { id: 'all', label: 'All', icon: '', count: 12 },
-  { id: 'letters', label: 'Letters', icon: 'Aa', count: 3 },
-  { id: 'colors', label: 'Colors', icon: '🎨', count: 4 },
+  { id: 'letters', label: 'Letters', icon: Letters, count: 3 },
+  { id: 'colors', label: 'Colors', icon: Colors, count: 4 },
 ];
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
@@ -105,26 +107,25 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flexGrow: 1,
-    paddingBottom: 120, // space for bottom tab bar
+    paddingBottom: 120, 
   },
   bannerSection: {
     paddingHorizontal: 20,
-    marginBottom: 32,
   },
   sectionHeader: {
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginVertical: 16,
   },
   sectionTitle: {
-    fontSize: 32,
+    fontSize: 26,
     letterSpacing: -0.352,
     fontFamily: 'Inter-SemiBold',
     color: '#010000',
   },
   categoryScroll: {
-    paddingHorizontal: 20,
-    gap: 12,
-    marginBottom: 24,
+    paddingHorizontal: 16,
+    gap: 6,
+    marginBottom: 10,
   },
   courseScroll: {
     paddingHorizontal: 20,

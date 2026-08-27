@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from '../ui/Avatar';
-import { IconButton } from '../ui/IconButton';
+import { LanguageSelector } from '../ui/LanguageSelector';
+import { NotificationButton } from '../ui/NotificationButton';
 
 interface HeaderRowProps {
   userName: string;
@@ -34,25 +34,11 @@ export const HeaderRow: React.FC<HeaderRowProps> = ({
 
       {/* Right: Language selector + notification */}
       <View style={styles.rightSection}>
-        <TouchableOpacity
-          style={styles.languageButton}
-          onPress={onLanguagePress}
-          activeOpacity={0.8}
-        >
-          <Text style={styles.flagEmoji}>🇬🇧</Text>
-          <Text style={styles.languageText}>English</Text>
-          <Ionicons name="chevron-down" size={14} color="#708892" />
-        </TouchableOpacity>
-
-        <View style={styles.notifContainer}>
-          <IconButton
-            icon="notifications-outline"
-            size={40}
-            iconSize={20}
-            onPress={onNotificationPress}
-          />
-          {hasNotifications ? <View style={styles.redDot} /> : null}
-        </View>
+        <LanguageSelector onPress={onLanguagePress} />
+        <NotificationButton
+          hasNotifications={hasNotifications}
+          onPress={onNotificationPress}
+        />
       </View>
     </View>
   );
@@ -91,35 +77,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-  },
-  languageButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(244,243,243,0.7)',
-    borderRadius: 20,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    gap: 4,
-  },
-  flagEmoji: {
-    fontSize: 16,
-  },
-  languageText: {
-    fontSize: 12,
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
-    color: '#708892',
-  },
-  notifContainer: {
-    position: 'relative',
-  },
-  redDot: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#FF4444',
   },
 });
