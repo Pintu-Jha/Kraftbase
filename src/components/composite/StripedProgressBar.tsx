@@ -62,7 +62,7 @@ export const StripedProgressBar: React.FC<
                 y1={scale(21)}
                 x2={scale(21)}
                 y2={scale(-7)}
-                stroke="#1C274C"
+                stroke={colors.btn}
                 strokeWidth={scale(2)}
               />
             </Pattern>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#1C274C',
+    backgroundColor: colors.btn,
     borderRadius: barWidth / 2,
     zIndex: 2,
   },
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     height: badgeSize,
     borderRadius: badgeSize / 2,
 
-    backgroundColor: '#9AA5B8',
+    backgroundColor: colors.mutedGray,
 
     alignItems: 'center',
     justifyContent: 'center',

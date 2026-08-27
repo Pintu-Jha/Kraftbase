@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { scale } from '../../theme/responsive';
+import { scale, textScale } from '../../theme/responsive';
 import { StripedProgressBar } from './StripedProgressBar';
 import { colors } from '../../theme';
 
@@ -168,17 +168,17 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: scale(26),
+    fontSize: textScale(26),
     letterSpacing: -1.1,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
   },
 
   subtitle: {
-    fontSize: scale(12),
+    fontSize: textScale(12),
     letterSpacing: -1.1,
     fontFamily: 'Inter-Medium',
-    color: '#708892',
+    color: colors.gray,
   },
 
   filterButton: {
@@ -190,15 +190,15 @@ const styles = StyleSheet.create({
   },
 
   filterText: {
-    fontSize: scale(16),
+    fontSize: textScale(16),
     letterSpacing: -0.176,
     fontFamily: 'Inter-SemiBold',
-    color: '#1C274C',
+    color: colors.btn,
   },
 
   filterIcon: {
-    fontSize: scale(10),
-    color: '#1C274C',
+    fontSize: textScale(10),
+    color: colors.btn,
   },
 
   categoriesRow: {
@@ -212,18 +212,18 @@ const styles = StyleSheet.create({
     paddingVertical: scale(16),
     borderRadius: scale(56),
     borderWidth:1,
-    borderColor:'#0000000D'
+    borderColor: colors.translucentBorder
   },
 
   categoryPillActive: {
-    backgroundColor: '#1C274C',
+    backgroundColor: colors.btn,
   },
 
   categoryText: {
-    fontSize: scale(12),
+    fontSize: textScale(12),
     letterSpacing: -1.1,
     fontFamily: 'Inter-SemiBold',
-    color: '#708892',
+    color: colors.gray,
   },
 
   categoryTextActive: {
@@ -248,9 +248,9 @@ const styles = StyleSheet.create({
   },
 
   dayLabel: {
-    fontSize: scale(16),
+    fontSize: textScale(16),
     letterSpacing: -0.176,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
   },
 });

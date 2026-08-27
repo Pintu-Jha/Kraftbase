@@ -7,6 +7,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { textScale } from '../../theme/responsive';
+import { colors } from '../../theme';
 import { HeaderRow } from '../../components/composite/HeaderRow';
 import { AiBuddyBanner } from '../../components/composite/AiBuddyBanner';
 import { FilterChip } from '../../components/ui/FilterChip';
@@ -103,7 +105,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
   },
   scroll: {
     flexGrow: 1,
@@ -117,10 +119,10 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   sectionTitle: {
-    fontSize: 26,
+    fontSize: textScale(26),
     letterSpacing: -0.352,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
   },
   categoryScroll: {
     paddingHorizontal: 16,

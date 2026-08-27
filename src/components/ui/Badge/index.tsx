@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ViewStyle } from 'react-native';
+import { colors, fontFamilies } from '../../../theme';
+import { textScale } from '../../../theme/responsive';
 
 interface BadgeProps {
   value: number | string;
@@ -28,7 +30,7 @@ export const Badge: React.FC<BadgeProps> = ({
           minWidth: size,
           height: size,
           borderRadius,
-          backgroundColor: active ? 'rgba(255,255,255,0.25)' : 'rgba(28,39,76,0.08)',
+          backgroundColor: active ? colors.badgeActive : colors.badgeInactive,
         },
         style,
       ]}
@@ -36,7 +38,7 @@ export const Badge: React.FC<BadgeProps> = ({
       <Text
         style={[
           styles.badgeText,
-          { fontSize: size * 0.5, color: active ? '#FFFFFF' : '#708892' },
+          { fontSize: textScale(size * 0.5), color: active ? colors.white : colors.gray },
         ]}
       >
         {value}
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   badgeText: {
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: fontFamilies.interSemiBold,
     letterSpacing: -0.132,
   },
 });

@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { colors, fontFamilies } from '../../theme';
+import { textScale } from '../../theme/responsive';
 
 export const ProfileScreen: React.FC = () => {
   return (
@@ -16,7 +18,7 @@ export const ProfileScreen: React.FC = () => {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
   },
   container: {
     flex: 1,
@@ -25,14 +27,14 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   title: {
-    fontSize: 32,
-    fontFamily: 'Inter-SemiBold',
-    color: '#1C274C',
+    fontSize: textScale(32),
+    fontFamily: fontFamilies.interSemiBold,
+    color: colors.btn,
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: '#708892',
+    fontSize: textScale(16),
+    fontFamily: fontFamilies.interRegular,
+    color: colors.gray,
   },
 });

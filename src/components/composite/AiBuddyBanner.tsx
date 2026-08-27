@@ -9,7 +9,8 @@ import { BulbIcon } from '../../assets/icons/svg/Bulb';
 import { StarIcon } from '../../assets/icons/svg/StarIcon';
 import { Lessons } from '../../assets/icons/svg/Lesson';
 import { Clock } from '../../assets/icons/svg/Clock';
-import { scale, verticalScale } from '../../theme/responsive';
+import { scale, verticalScale, textScale } from '../../theme/responsive';
+import { colors, fontFamilies } from '../../theme';
 
 interface AiBuddyBannerProps {
   progress: number;
@@ -44,7 +45,7 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
       <View style={styles.topSection}>
         <View style={styles.leftContent}>
           <View style={styles.avatarCluster}>
-            <Avatar size={scale(44)} backgroundColor="#3C425F" emoji="🤖" />
+            <Avatar size={scale(44)} backgroundColor={colors.robotAvatarCircleBg} emoji="🤖" />
           </View>
           <View style={styles.textBlock}>
             <Text style={styles.labelText}>Your A.i buddy</Text>
@@ -57,7 +58,7 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
         intensity={21}
         tint="light"
         borderRadius={32}
-        backgroundColor="#FFFFFFD6"
+        backgroundColor={colors.translucentWhiteStrong}
         style={styles.bottomBlurCard}
       >
         <View style={styles.bottomSection}>
@@ -83,7 +84,7 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
               progress={progress}
               size={scale(46)}
               strokeWidth={4}
-              strokeColor="#2F3656"
+              strokeColor={colors.robotStroke}
               playButtonSize={scale(40)}
               playIconSize={scale(18)}
               onPress={onPlayPress}
@@ -97,7 +98,7 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#E8EFF5',
+    backgroundColor: colors.aiBuddyBannerBackground,
     borderRadius: 32,
     paddingTop: verticalScale(18),
     paddingHorizontal: scale(16),
@@ -166,16 +167,16 @@ const styles = StyleSheet.create({
     paddingTop: 2,
   },
   labelText: {
-    fontSize: 13,
+    fontSize: textScale(13),
     letterSpacing: -0.143,
-    fontFamily: 'Inter-Regular',
-    color: 'rgba(1,0,0,0.5)',
+    fontFamily: fontFamilies.interRegular,
+    color: colors.mutedBodyText,
   },
   mainText: {
-    fontSize: 14,
+    fontSize: textScale(14),
     letterSpacing: -0.176,
-    fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    fontFamily: fontFamilies.interSemiBold,
+    color: colors.black,
   },
    bottomSection: {
     flexDirection: 'row',
@@ -191,9 +192,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
    pickTitle: {
-    fontSize: 14,
+    fontSize: textScale(14),
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
     fontWeight:'500'
   },
    metaRow: {
@@ -213,9 +214,9 @@ const styles = StyleSheet.create({
     marginHorizontal: scale(4),
   },
   metaText: {
-    fontSize: 12,
+    fontSize: textScale(12),
     fontFamily: 'Inter-Regular',
-    color: 'rgba(1,0,0,0.6)',
+    color: colors.mutedBodyTextStrong,
   },
   rightActions: {
     flexDirection: 'row',
@@ -223,9 +224,9 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   progressText: {
-    fontSize: 13,
+    fontSize: textScale(13),
     letterSpacing: -0.143,
     fontFamily: 'Inter-Medium',
-    color: '#708892',
+    color: colors.gray,
   },
 });

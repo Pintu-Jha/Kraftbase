@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(12),
     alignItems:'center',
     justifyContent:"center",
-    backgroundColor:'#FFFFFF66',
+    backgroundColor: colors.translucentWhiteButton,
     borderRadius:moderateScale(28)
   },
 

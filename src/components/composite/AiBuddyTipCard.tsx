@@ -9,7 +9,7 @@ import {
 import { Fire } from '../../assets/illustrations/Fire';
 import { Close } from '../../assets/icons/svg/Close';
 import { colors } from '../../theme';
-import { scale } from '../../theme/responsive';
+import { scale, textScale } from '../../theme/responsive';
 
 interface AiBuddyTipCardProps {
   message: string;
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-between',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   message: {
     flex: 1,
-    fontSize: scale(12),
+    fontSize: textScale(12),
     fontFamily: 'Inter-Medium',
     color: colors.black,
     lineHeight: scale(20),

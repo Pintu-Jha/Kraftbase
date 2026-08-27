@@ -3,9 +3,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Fire } from '../../assets/illustrations/Fire';
 import type { StreakDay } from '../../types/index';
 import { colors } from '../../theme';
+import { textScale } from '../../theme/responsive';
 
-const ACTIVE_TICK_COLOR = '#5A9F3B';
-const INACTIVE_TICK_COLOR = 'rgba(193,199,202,0.6)';
+const ACTIVE_TICK_COLOR = colors.activeTick;
+const INACTIVE_TICK_COLOR = colors.inactiveTick;
 
 interface StreakTrackerProps {
   days: StreakDay[];
@@ -48,8 +49,8 @@ export const StreakTracker: React.FC<StreakTrackerProps> = ({
                     {
                       width: `${segmentWidth}%`,
                       backgroundColor: dayItem.isActive
-                        ? 'rgba(90,160,43,0.25)'
-                        : 'rgba(255,255,255,0.6)',
+                        ? colors.activeSegment
+                        : colors.inactiveSegment,
                     },
                   ]}
                 />
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   streakTitle: {
-    fontSize: 20,
+    fontSize: textScale(20),
     letterSpacing: -1.1,
     fontFamily: 'Inter-SemiBold',
     color: colors.black,
@@ -133,14 +134,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
   },
   streakCountBold: {
-    color: '#010000',
+    color: colors.black,
     fontFamily: 'Inter-SemiBold',
-    fontSize: 22,
+    fontSize: textScale(22),
   },
   streakCountLight: {
-    color: '#9BA5AA',
+    color: colors.mutedGray,
     fontFamily: 'Inter-Medium',
-    fontSize: 22,
+    fontSize: textScale(22),
   },
   progressSection: {
     gap: 12,
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     height: 34,
     borderRadius: 24,
     overflow: 'hidden',
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    backgroundColor: colors.inactiveSegment,
   },
   progressSegment: {
     height: '100%',
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 6,
@@ -198,16 +199,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   dayLabel: {
-    fontSize: 14,
+    fontSize: textScale(14),
     letterSpacing: -0.154,
     fontFamily: 'Inter-SemiBold',
     flex: 1,
     textAlign: 'center',
   },
   dayLabelActive: {
-    color: '#010000',
+    color: colors.black,
   },
   dayLabelInactive: {
-    color: '#C1C7CA',
+    color: colors.inactiveGray,
   },
 });

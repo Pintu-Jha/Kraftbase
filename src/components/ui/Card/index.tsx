@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
+import { colors } from '../../../theme';
 
 interface CardProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({
   children,
-  backgroundColor = '#FFFFFF',
+  backgroundColor = colors.white,
   borderRadius = 32,
   style,
 }) => {

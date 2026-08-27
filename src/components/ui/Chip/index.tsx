@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 import { TouchableOpacity, Text, View, StyleSheet, ViewStyle } from 'react-native';
+import { colors, fontFamilies, textStyles } from '../../../theme';
+import { textScale } from '../../../theme/responsive';
 
 type ChipVariant = 'filled' | 'outline' | 'frosted';
 
@@ -62,7 +64,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   chipFilledActive: {
-    backgroundColor: '#1C274C',
+    backgroundColor: colors.btn,
   },
   chipFilledInactive: {
     backgroundColor: 'transparent',
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     gap: 4,
-    backgroundColor: 'rgba(244,243,243,0.7)',
+    backgroundColor: colors.neutralB,
     borderWidth: 0,
   },
   chipFrosted: {
@@ -80,34 +82,34 @@ const styles = StyleSheet.create({
     height: 36,
     padding: 12,
     gap: 4,
-    backgroundColor: 'rgba(255,255,255,0.29)',
+    backgroundColor: colors.frostedChipA,
   },
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
   labelFilledActive: {
-    fontSize: 12,
+    fontSize: textScale(textStyles.xs.fontSize),
     letterSpacing: -0.132,
     fontFamily: 'Inter-Medium',
     color: '#FFFFFF',
   },
   labelFilledInactive: {
-    fontSize: 12,
+    fontSize: textScale(textStyles.xs.fontSize),
     letterSpacing: -0.132,
     fontFamily: 'Inter-Medium',
-    color: '#708892',
+    color: colors.gray,
   },
   labelOutline: {
-    fontSize: 12,
+    fontSize: textScale(textStyles.xs.fontSize),
     letterSpacing: -0.132,
     fontFamily: 'Inter-Medium',
-    color: '#708892',
+    color: colors.gray,
   },
   labelFrosted: {
-    fontSize: 10,
+    fontSize: textScale(10),
     letterSpacing: -0.11,
     fontFamily: 'Inter-Medium',
-    color: '#073647',
+    color: colors.buttonLabel,
   },
 });

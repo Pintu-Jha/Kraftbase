@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from '../ui/Avatar';
 import { LanguageSelector } from '../ui/LanguageSelector';
 import { NotificationButton } from '../ui/NotificationButton';
+import { colors, fontFamilies } from '../../theme';
+import { textScale } from '../../theme/responsive';
 
 interface HeaderRowProps {
   userName: string;
@@ -25,7 +27,7 @@ export const HeaderRow: React.FC<HeaderRowProps> = ({
     <View style={styles.container}>
       {/* Left: Avatar + greeting */}
       <View style={styles.leftSection}>
-        <Avatar size={56} backgroundColor="#4A9B9F" emoji={avatarEmoji} />
+        <Avatar size={textScale(56)} backgroundColor={colors.tealAvatar} emoji={avatarEmoji} />
         <View style={styles.greetingBlock}>
           <Text style={styles.helloText}>Hello {userName} 👋</Text>
           <Text style={styles.greetingText}>{greeting}</Text>
@@ -62,16 +64,16 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   helloText: {
-    fontSize: 14,
+    fontSize: textScale(14),
     letterSpacing: -0.154,
     fontFamily: 'Inter-Regular',
-    color: 'rgba(1,0,0,0.5)',
+    color: colors.mutedBodyText,
   },
   greetingText: {
-    fontSize: 16,
+    fontSize: textScale(16),
     letterSpacing: -0.176,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
   },
   rightSection: {
     flexDirection: 'row',

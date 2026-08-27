@@ -12,6 +12,7 @@ import { AiBuddyTipCard } from '../../components/composite/AiBuddyTipCard';
 import { MOCK_ANALYTICS } from '../../types/mockData';
 import type { AnalyticsScreenProps } from '../../navigation/types';
 import { colors } from '../../theme';
+import { textScale } from '../../theme/responsive';
 
 export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) => {
 
@@ -57,13 +58,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   screenTitle: {
-    fontSize: 26,
+    fontSize: textScale(26),
     letterSpacing: -0.286,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
   },
   card: {
-    backgroundColor: '#F1F1F180',
+    backgroundColor: colors.analyticsCard,
     borderRadius: 32,
     padding: 12,
     gap: 11,

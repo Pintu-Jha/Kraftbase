@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
+import { colors } from '../../../theme';
 
 type ProgressRailStatus = 'completed' | 'active' | 'locked';
 
@@ -29,10 +30,10 @@ export const ProgressRail: React.FC<ProgressRailProps> = ({
           width,
           backgroundColor:
             status === 'completed'
-              ? '#7CA62B'
+              ? colors.completed
               : status === 'active'
-              ? 'rgba(124,166,43,0.3)'
-              : '#F5F5F5',
+              ? colors.lessonProgressRail
+              : colors.incomplete,
         },
         style,
       ]}

@@ -4,6 +4,7 @@ import { PersonalizedCardCurve } from '../../assets/illustrations/PersonalizedCa
 import KidOnApple from '../../assets/illustrations/KidOnApple';
 import { StarIcon } from '../../assets/icons/svg/StarIcon';
 import { scale, verticalScale, moderateScale, textScale } from '../../theme/responsive';
+import { colors, fontFamilies } from '../../theme';
 
 
 export const FeatureCardStack: React.FC = () => {
@@ -13,7 +14,7 @@ export const FeatureCardStack: React.FC = () => {
         style={[
           styles.card,
           styles.cardBack,
-          { backgroundColor: '#F2D1D0' },
+          { backgroundColor: colors.featureTagPink },
         ]}
       >
         <Text style={styles.cardLabel}>Instant Feedback</Text>
@@ -23,7 +24,7 @@ export const FeatureCardStack: React.FC = () => {
         style={[
           styles.card,
           styles.cardMiddle,
-          { backgroundColor: '#DFF28A' },
+          { backgroundColor: colors.featureTagLime },
         ]}
       >
         <Text style={[styles.cardLabel, styles.cardLabelFaded]}>
@@ -35,7 +36,7 @@ export const FeatureCardStack: React.FC = () => {
         style={[
           styles.card,
           styles.cardFront,
-          { backgroundColor: '#CADDF7' },
+          { backgroundColor: colors.personalizedCard },
         ]}
       >
         <View style={styles.starIconWrapper}>
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: moderateScale(20),
     borderWidth: scale(7),
-    borderColor: '#FFFFFF',
+    borderColor: colors.white,
   },
   cardBack: {
     width: scale(200),
@@ -118,8 +119,8 @@ const styles = StyleSheet.create({
   cardLabel: {
     fontSize: textScale(16),
     letterSpacing: -0.176,
-    fontFamily: 'Inter-Medium',
-    color: '#010000',
+    fontFamily: fontFamilies.interMedium,
+    color: colors.black,
     textAlign: 'center',
   },
   cardLabelFaded: {
@@ -142,10 +143,10 @@ const styles = StyleSheet.create({
     fontSize: textScale(28),
     letterSpacing: -0.33,
     fontFamily: 'Inter-Medium',
-    color: '#010000',
+    color: colors.black,
   },
   highlightPill: {
-    backgroundColor: '#71A6EE',
+    backgroundColor: colors.blueHighlight,
     borderRadius: moderateScale(32),
     paddingHorizontal: scale(14),
     paddingVertical: verticalScale(3),
@@ -156,13 +157,13 @@ const styles = StyleSheet.create({
     fontSize: textScale(25),
     letterSpacing: -0.297,
     fontFamily: 'Inter-Medium',
-    color: '#FFFFFF',
+    color: colors.white,
   },
   bodyText: {
     fontSize: textScale(13),
     letterSpacing: -0.154,
     fontFamily: 'Inter-Regular',
-    color: 'rgba(28,39,76,0.5)',
+    color: colors.translucentBlue,
     lineHeight: textScale(18),
     flexWrap: 'wrap',
   },
@@ -175,13 +176,13 @@ const styles = StyleSheet.create({
     width: scale(24),
     height: verticalScale(8),
     borderRadius: moderateScale(4),
-    backgroundColor: '#1C274C',
+    backgroundColor: colors.btn,
   },
   dotInactive: {
     width: scale(8),
     height: verticalScale(8),
     borderRadius: moderateScale(4),
-    backgroundColor: 'rgba(28,39,76,0.2)',
+    backgroundColor: colors.translucentBlueLight,
   },
   illustrationWrapper: {
     position: 'absolute',

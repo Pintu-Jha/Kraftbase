@@ -28,7 +28,7 @@ export const AiBuddyProgress: React.FC<AiBuddyProgressProps> = ({
       intensity={21}
       tint="light"
       borderRadius={moderateScale(25)}
-      backgroundColor="rgba(255,255,255,0.4)"
+      backgroundColor={colors.frostedLessonBanner}
       style={StyleSheet.flatten(style)}
     >
       <View style={styles.content}>
@@ -65,7 +65,7 @@ export const AiBuddyProgress: React.FC<AiBuddyProgressProps> = ({
 
         <View style={styles.progressContainer}>
           <View style={styles.circleBackground} />
-          <ProgressRing width={size} height={size} fillColor={'#686F3E33'} />
+          <ProgressRing width={size} height={size} fillColor={colors.progressRingBackground} />
           <Svg width={size} height={size} style={styles.progressOverlay}>
             <G rotation="-90" origin={`${size / 2}, ${size / 2}`}>
               <Circle
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     width: scale(55),
     height: scale(55),
     borderRadius: scale(27.5),
-    backgroundColor: '#FFFFFF80',
+    backgroundColor: colors.translucentWhite,
   },
   progressOverlay: {
     position: 'absolute',

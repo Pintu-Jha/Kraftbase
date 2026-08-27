@@ -12,6 +12,20 @@ export const namedColors = {
   bottomIconInActive:'#141B34',
   gray: '#708892',
   white: '#FFFFFF',
+  transparent: 'transparent',
+  shadow: '#000000',
+  tealAvatar: '#4A9B9F',
+  blueHighlight: '#71A6EE',
+  mutedGray: '#9BA5AA',
+  inactiveGray: '#C1C7CA',
+  alert: '#FF4444',
+  lessonProgressCompleted: '#6F911F',
+  lessonProgressCurrent: '#DDE9F4',
+  lessonProgressLocked: 'rgba(180,190,205,0.14)',
+  lessonProgressLockedLine: 'rgba(180,190,205,0.12)',
+  lessonProgressRail: 'rgba(124,166,43,0.3)',
+  badgeActive: 'rgba(255,255,255,0.25)',
+  badgeInactive: 'rgba(28,39,76,0.08)',
 } as const;
 
 // ─── Onboarding (frame 1:725) ─────────────────────────────────────────────────
@@ -50,6 +64,7 @@ export const lessonCardColors = {
 export const iconColors = {
   darkIconButtonBg: '#161A34',
   robotAvatarCircleBg: '#3C425F',
+  robotStroke: '#2F3656',
 } as const;
 
 // ─── Progress ─────────────────────────────────────────────────────────────────
@@ -57,11 +72,21 @@ export const progressColors = {
   completed: '#7CA62B',
   completedLight: '#D4E5B8',
   incomplete: '#F5F5F5',
+  activeTick: '#5A9F3B',
+  inactiveTick: 'rgba(193,199,202,0.6)',
+  activeSegment: 'rgba(90,160,43,0.25)',
+  inactiveSegment: 'rgba(255,255,255,0.6)',
+  progressRingBackground: '#686F3E33',
+  chartInactive: '#F5F5F5',
+  chartActive: '#7CA62B',
+  chartTooltip: '#7CA62B',
 } as const;
 
 // ─── Analytics (frame 1:825) ──────────────────────────────────────────────────
 export const analyticsColors = {
   skillProgressCard: '#E5F2F9',
+  analyticsCard: '#F1F1F180',
+  aiBuddyBannerBackground: '#E8EFF5',
   activeBarSelectedPill: '#1C274C',
   streakActive: 'rgba(90,160,43,0.19)',
   streakInactive: 'rgba(255,255,255,0.49)',
@@ -77,6 +102,16 @@ export const chipColors = {
 // ─── Text / overlay ───────────────────────────────────────────────────────────
 export const overlayColors = {
   mutedBodyText: 'rgba(1,0,0,0.5)',
+  mutedBodyTextStrong: 'rgba(1,0,0,0.6)',
+  mutedBlack: 'rgba(0,0,0,0.3)',
+  translucentWhite: '#FFFFFF80',
+  translucentWhiteStrong: '#FFFFFFD6',
+  translucentWhiteButton: '#FFFFFF66',
+  translucentWhiteLesson: '#FFFFFF61',
+  translucentWhiteBorder: '#FFFFFF',
+  translucentBorder: '#0000000D',
+  translucentBlue: 'rgba(28,39,76,0.5)',
+  translucentBlueLight: 'rgba(28,39,76,0.2)',
   frostedLessonBanner: 'rgba(255,255,255,0.4)',
   frostedChipA: 'rgba(255,255,255,0.29)',
   frostedChipB: 'rgba(255,255,255,0.38)',

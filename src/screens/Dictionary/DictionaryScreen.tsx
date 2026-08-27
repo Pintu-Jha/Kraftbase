@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { colors, fontFamilies } from '../../theme';
+import { textScale } from '../../theme/responsive';
 
 export const DictionaryScreen: React.FC = () => {
   return (
@@ -16,7 +18,7 @@ export const DictionaryScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
   },
   content: {
     flex: 1,
@@ -25,15 +27,15 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 32,
-    fontFamily: 'Inter-Bold',
-    color: '#1C274C',
+    fontSize: textScale(32),
+    fontFamily: fontFamilies.interSemiBold,
+    color: colors.btn,
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 16,
-    fontFamily: 'Inter-Regular',
-    color: '#708892',
+    fontSize: textScale(16),
+    fontFamily: fontFamilies.interRegular,
+    color: colors.gray,
     textAlign: 'center',
   },
 });

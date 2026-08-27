@@ -1,6 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle, View } from 'react-native';
 import { SvgProps } from 'react-native-svg';
+import { colors, fontFamilies } from '../../../theme';
+import { textScale } from '../../../theme/responsive';
 
 type FilterChipVariant = 'withIcon' | 'textOnly';
 
@@ -14,9 +16,9 @@ interface FilterChipProps {
   style?: ViewStyle;
 }
 
-const ACTIVE_COLOR = '#FFFFFF';
-const INACTIVE_COLOR = '#1C274C';
-const ACTIVE_BG = '#1C274C';
+const ACTIVE_COLOR = colors.white;
+const INACTIVE_COLOR = colors.btn;
+const ACTIVE_BG = colors.btn;
 
 export const FilterChip: React.FC<FilterChipProps> = ({
   label,
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
   chipInactive: {
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#0000000D',
+    borderColor: colors.translucentBorder,
     paddingLeft: 8,
   },
   content: {
@@ -107,12 +109,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   icon: {
-    fontSize: 18,
+    fontSize: textScale(18),
   },
   label: {
-    fontSize: 15,
+    fontSize: textScale(15),
     letterSpacing: -0.165,
-    fontFamily: 'Inter-Medium',
+    fontFamily: fontFamilies.interMedium,
   },
   labelActive: {
     color: ACTIVE_COLOR,
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     height: 34,
     borderRadius: 40,
     padding: 8,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -134,14 +136,14 @@ const styles = StyleSheet.create({
     height: 34,
     borderRadius: 40,
     padding: 8,
-    backgroundColor: '#F4F3F380',
+    backgroundColor: colors.neutralA,
     alignItems: 'center',
     justifyContent: 'center',
   },
   countText: {
-    fontSize: 12,
+    fontSize: textScale(12),
     letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
+    fontFamily: fontFamilies.interMedium,
   },
   countTextActive: {
     color: ACTIVE_BG,

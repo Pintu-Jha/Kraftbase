@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, StatusBar, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../../components/ui/Button';
+import { colors } from '../../theme';
 import { FeatureCardStack } from '../../components/composite/FeatureCardStack';
 import { OnboardingBackgroundCurve } from '../../assets/illustrations/OnboardingBackgroundCurve';
 import { LOGO } from '../../assets/icons/svg/LOGO';
@@ -52,7 +53,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
   },
   container: {
     flex: 1,
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: textScale(24),
     letterSpacing: -0.264,
     fontFamily: 'Inter-Medium',
-    color: '#010000',
+    color: colors.black,
     textAlign: 'center',
   },
 

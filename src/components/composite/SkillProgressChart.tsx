@@ -3,6 +3,8 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Svg, { Rect } from 'react-native-svg';
 import { BlurCard } from '../ui/BlurCard';
 import type { SkillProgress } from '../../types/index';
+import { colors, fontFamilies } from '../../theme';
+import { textScale } from '../../theme/responsive';
 
 interface SkillProgressChartProps {
   data: SkillProgress[];
@@ -15,8 +17,8 @@ export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
 }) => {
   const barWidth = 42;
   const barRadius = 21; // top pill
-  const activeColor = '#1C274C';
-  const inactiveColor = '#F5F5F5';
+  const activeColor = colors.btn;
+  const inactiveColor = colors.chartInactive;
 
   return (
     <View style={styles.container}>
@@ -50,7 +52,7 @@ export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
                     width={barWidth}
                     height={barHeight}
                     rx={barRadius}
-                    fill={isActive ? activeColor : '#7CA62B'}
+                    fill={isActive ? activeColor : colors.chartActive}
                   />
                 </Svg>
                 
@@ -61,7 +63,7 @@ export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
                       intensity={88}
                       tint="light"
                       borderRadius={16}
-                      backgroundColor="rgba(255,255,255,0.1)"
+                      backgroundColor={colors.frostedLessonBanner}
                       style={styles.tooltipBlur}
                     >
                       <View style={styles.tooltip}>
@@ -114,21 +116,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tooltipText: {
-    fontSize: 13,
+    fontSize: textScale(13),
     letterSpacing: -0.143,
-    fontFamily: 'Inter-SemiBold',
-    color: '#7CA62B',
+    fontFamily: fontFamilies.interSemiBold,
+    color: colors.chartTooltip,
   },
   skillLabel: {
-    fontSize: 12,
+    fontSize: textScale(12),
     letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
-    color: '#708892',
+    fontFamily: fontFamilies.interMedium,
+    color: colors.gray,
   },
   percentLabel: {
-    fontSize: 12,
+    fontSize: textScale(12),
     letterSpacing: -0.132,
-    fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    fontFamily: fontFamilies.interSemiBold,
+    color: colors.black,
   },
 });

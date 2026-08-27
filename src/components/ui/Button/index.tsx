@@ -1,5 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
+import { colors, fontFamilies } from '../../../theme';
+import { textScale } from '../../../theme/responsive';
 
 interface ButtonProps {
   label: string;
@@ -31,22 +33,22 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   filled: {
-    backgroundColor: '#1C274C',
+    backgroundColor: colors.btn,
   },
   outline: {
     backgroundColor: 'transparent',
     borderWidth: 1.5,
-    borderColor: '#1C274C',
+    borderColor: colors.btn,
   },
   label: {
-    fontSize: 16,
+    fontSize: textScale(16),
     letterSpacing: -0.176,
-    fontFamily: 'Inter-SemiBold',
+    fontFamily: fontFamilies.interSemiBold,
   },
   labelFilled: {
-    color: '#FFFFFF',
+    color: colors.white,
   },
   labelOutline: {
-    color: '#1C274C',
+    color: colors.btn,
   },
 });

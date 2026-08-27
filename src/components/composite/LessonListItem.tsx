@@ -15,8 +15,8 @@ interface LessonListItemProps {
 
 const ClockIcon = () => (
   <Svg width={14} height={14} viewBox="0 0 14 14" fill="none">
-    <Circle cx={7} cy={7} r={6.5} stroke="#161A34" strokeWidth={1} fill="none" />
-    <Path d="M7 3.5V7L9.5 9.5" stroke="#161A34" strokeWidth={1} strokeLinecap="round" />
+    <Circle cx={7} cy={7} r={6.5} stroke={colors.darkIconButtonBg} strokeWidth={1} fill="none" />
+    <Path d="M7 3.5V7L9.5 9.5" stroke={colors.darkIconButtonBg} strokeWidth={1} strokeLinecap="round" />
   </Svg>
 );
 
@@ -46,7 +46,7 @@ export const LessonListItem: React.FC<LessonListItemProps> = ({ lesson, onPress 
         <View style={styles.replayButton}>
           <Text style={styles.replayText}>{lesson.buttonText ?? 'Start'}</Text>
           <View style={styles.playCircle}>
-            <Play fill={'#fff'} width={scale(10)} height={scale(10)}/>
+            <Play fill={colors.white} width={scale(10)} height={scale(10)}/>
           </View>
         </View>
       </View>
@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
     fontSize: textScale(16),
     letterSpacing: -1.1,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
   },
   durationBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: scale(4),
-    backgroundColor:'#FFFFFF61',
+    backgroundColor: colors.translucentWhiteLesson,
     paddingVertical:verticalScale(6),
     paddingHorizontal:scale(8),
     borderRadius:moderateScale(24)
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: textScale(10),
     letterSpacing: -0.154,
     fontFamily: 'Inter-SemiBold',
-    color: '#161A34',
+    color: colors.darkIconButtonBg,
   },
   bottomRow: {
     flexDirection: 'row',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     paddingLeft: scale(8),
     paddingRight: scale(12),
     gap: scale(6),
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkIconButtonBg,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: {
       width: 0,
       height: 1,

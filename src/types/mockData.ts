@@ -1,12 +1,13 @@
 import type { Course, Lesson, AnalyticsData, CourseType } from './index';
+import { colors } from '../theme/colors';
 
 export const MOCK_COURSES: Course[] = [
   {
     id: '1',
     title: 'Colors',
     subTitle:'Learn colors with objects',
-    backgroundColor: '#E5CDFF',
-    categoryColor: '#9881B3',
+    backgroundColor: colors.courseCardColors,
+    categoryColor: colors.categoryLabelPurple,
     lessonCount: 12,
     completedCount: 4,
     type: 'colors' as CourseType,
@@ -15,8 +16,8 @@ export const MOCK_COURSES: Course[] = [
     id: '2',
     title: 'Letters',
     subTitle:'Learn ABC with fun sounds',
-    backgroundColor: '#E1F18C',
-    categoryColor: '#708892',
+    backgroundColor: colors.courseCardLetters,
+    categoryColor: colors.categoryLabelGreen,
     lessonCount: 26,
     completedCount: 5,
     type: 'letters' as CourseType,
@@ -30,7 +31,7 @@ export const MOCK_LESSONS: Lesson[] = [
     title: 'A for Apple', 
     description: 'Learn the sound of A and objects that start with A',
     duration: '2 min',
-    backgroundColor: '#F4EFD7', 
+    backgroundColor: colors.aForApple,
     status: 'completed', 
     progress: 1,
     buttonText: 'Replay'
@@ -40,7 +41,7 @@ export const MOCK_LESSONS: Lesson[] = [
     title: 'B for Ball', 
     description: 'Recognize the letter B and its phonetic sound',
     duration: '3 min',
-    backgroundColor: '#FFE9E9', 
+    backgroundColor: colors.bForBall,
     status: 'active', 
     progress: 0.6,
     buttonText: 'Continue'
@@ -50,7 +51,7 @@ export const MOCK_LESSONS: Lesson[] = [
     title: 'D for Dog', 
     description: 'Hear and repeat the D sound',
     duration: '5 min',
-    backgroundColor: '#D7EAF8', 
+    backgroundColor: colors.dForDog,
     status: 'active', 
     progress: 0,
     buttonText: 'Start Lesson'
@@ -60,7 +61,7 @@ export const MOCK_LESSONS: Lesson[] = [
     title: 'C for Cat', 
     description: 'Learn the "C" sound with fun animations',
     duration: '10 min',
-    backgroundColor: '#E5CDFF', 
+    backgroundColor: colors.cForCat,
     status: 'active', 
     progress: 0,
     buttonText: 'Start Lesson'
@@ -70,7 +71,7 @@ export const MOCK_LESSONS: Lesson[] = [
     title: 'E for Elephant', 
     description: 'Discover the E sound and practice words',
     duration: '10 min',
-    backgroundColor: '#F9E9DC', 
+    backgroundColor: colors.eForElephant,
     status: 'locked',
     buttonText: 'Locked'
   },
@@ -79,7 +80,7 @@ export const MOCK_LESSONS: Lesson[] = [
     title: 'F for Fish', 
     description: 'Learn F sound with underwater theme',
     duration: '8 min',
-    backgroundColor: '#F4EFD7', 
+    backgroundColor: colors.aForApple,
     status: 'locked',
     buttonText: 'Locked'
   },

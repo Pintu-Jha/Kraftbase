@@ -4,6 +4,7 @@ import Svg, { Circle } from 'react-native-svg';
 import { ProgressRing } from '../../../assets/icons/svg/ProgressRing';
 import { Play } from '../../../assets/icons/svg/Play';
 import { scale } from '../../../theme/responsive';
+import { colors } from '../../../theme';
 
 interface ProgressPlayButtonProps {
   progress: number; // 0-1
@@ -20,7 +21,7 @@ export const ProgressPlayButton: React.FC<ProgressPlayButtonProps> = ({
   progress,
   size = scale(46),
   strokeWidth = 4,
-  strokeColor = '#2F3656',
+  strokeColor = colors.robotStroke,
   playButtonSize = scale(40),
   playIconSize = scale(18),
   onPress,
@@ -84,10 +85,10 @@ const styles = StyleSheet.create({
   },
   playButton: {
     position: 'absolute',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
     shadowRadius: 8,
