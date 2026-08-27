@@ -5,7 +5,7 @@
 export { colors, namedColors } from './colors';
 export type { ColorKey } from './colors';
 
-export { textStyles, fontFamilies } from './typography';
+export { textStyles, fontFamilies, getTextStyle } from './typography';
 export type { TextStyleKey } from './typography';
 
 export { spacing } from './spacing';

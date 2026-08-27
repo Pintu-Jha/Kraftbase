@@ -1,3 +1,5 @@
+import { textScale } from './responsive';
+
 /**
  * Design tokens — typography
  * Extracted verbatim from Figma file: Kraftbase (fileKey: 0hLuOTK9L9ZldluGzQJjxE)
@@ -53,3 +55,16 @@ export const textStyles = {
 } as const;
 
 export type TextStyleKey = keyof typeof textStyles;
+
+export function getTextStyle(
+  styleKey: TextStyleKey,
+  fontFamily: string = fontFamilies.interRegular,
+) {
+  const style = textStyles[styleKey];
+
+  return {
+    fontSize: textScale(style.fontSize),
+    letterSpacing: style.letterSpacing,
+    fontFamily,
+  };
+}

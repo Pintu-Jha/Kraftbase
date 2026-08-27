@@ -1,4 +1,11 @@
-import type { Course, Lesson, AnalyticsData, CourseType } from './index';
+import type {
+  Course,
+  Lesson,
+  AnalyticsData,
+  CourseType,
+  SkillCategory,
+  WeeklyData,
+} from './index';
 import { colors } from '../theme/colors';
 
 export const MOCK_COURSES: Course[] = [
@@ -105,3 +112,20 @@ export const MOCK_ANALYTICS: AnalyticsData = {
   ],
   weeklyData: [3, 7, 5, 8, 4, 6, 9],
 };
+
+export const DEFAULT_SKILL_CATEGORIES: SkillCategory[] = [
+  { name: 'Letters', value: 0.65, improvement: 30 },
+  { name: 'Colors', value: 0.75 },
+  { name: 'Shapes', value: 0.82 },
+  { name: 'Animals', value: 0.55 },
+];
+
+export const DEFAULT_WEEKLY_DATA: WeeklyData[] = [
+  { day: 'Mon', value: 0.45 },
+  { day: 'Tue', value: 0.78 },
+  { day: 'Wed', value: 0.68 },
+  { day: 'Thu', value: 0.95, isToday: true },
+  { day: 'Fri', value: 0.52 },
+  { day: 'Sat', value: 0.35 },
+  { day: 'Sun', value: 0.72 },
+];

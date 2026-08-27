@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TouchableOpacity, Text, View, StyleSheet, ViewStyle } from 'react-native';
-import { colors, fontFamilies, textStyles } from '../../../theme';
+import { colors, fontFamilies, getTextStyle } from '../../../theme';
 import { textScale } from '../../../theme/responsive';
 
 type ChipVariant = 'filled' | 'outline' | 'frosted';
@@ -89,21 +89,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   labelFilledActive: {
-    fontSize: textScale(textStyles.xs.fontSize),
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
+    ...getTextStyle('xs', fontFamilies.interMedium),
     color: '#FFFFFF',
   },
   labelFilledInactive: {
-    fontSize: textScale(textStyles.xs.fontSize),
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
+    ...getTextStyle('xs', fontFamilies.interMedium),
     color: colors.gray,
   },
   labelOutline: {
-    fontSize: textScale(textStyles.xs.fontSize),
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
+    ...getTextStyle('xs', fontFamilies.interMedium),
     color: colors.gray,
   },
   labelFrosted: {

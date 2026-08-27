@@ -4,12 +4,11 @@
  * Named styles defined in Figma + all raw hex/rgba fills found across all 4 frames.
  */
 
-// ─── Figma named styles ───────────────────────────────────────────────────────
-export const namedColors = {
+const palette = {
   black: '#010000',
   black50:'#01000080',
-  btn: '#1C274C',
-  bottomIconInActive:'#141B34',
+  navy: '#1C274C',
+  darkNavy: '#141B34',
   gray: '#708892',
   white: '#FFFFFF',
   transparent: 'transparent',
@@ -26,38 +25,62 @@ export const namedColors = {
   lessonProgressRail: 'rgba(124,166,43,0.3)',
   badgeActive: 'rgba(255,255,255,0.25)',
   badgeInactive: 'rgba(28,39,76,0.08)',
+  pink: '#F2D1D0',
+  lime: '#DFF28A',
+  personalizedBlue: '#CADDF7',
+  buddyBlue: '#EAF1F9',
+  coursePurple: '#E5CDFF',
+  courseLime: '#E1F18C',
+  mutedChipText: '#6A8282',
+  buttonLabel: '#073647',
+  categoryPurple: '#9881B3',
+  apple: '#F4EFD7',
+  ball: '#FFE9E9',
+  dog: '#D7EAF8',
+  elephant: '#F9E9DC',
+  heroLime: '#DCEA8F',
+  progressGreen: '#7CA62B',
+  progressGreenLight: '#D4E5B8',
+  progressGray: '#F5F5F5',
+} as const;
+
+// ─── Figma named styles ───────────────────────────────────────────────────────
+export const namedColors = {
+  ...palette,
+  btn: palette.navy,
+  bottomIconInActive: palette.darkNavy,
 } as const;
 
 // ─── Onboarding (frame 1:725) ─────────────────────────────────────────────────
 export const onboardingColors = {
-  featureTagPink: '#F2D1D0',
-  featureTagLime: '#DFF28A',
-  personalizedCard: '#CADDF7',
+  featureTagPink: palette.pink,
+  featureTagLime: palette.lime,
+  personalizedCard: palette.personalizedBlue,
 } as const;
 
 // ─── Home (frame 1:351) ───────────────────────────────────────────────────────
 export const homeColors = {
-  aiBuddyBanner: '#EAF1F9',
-  courseCardColors: '#E5CDFF',
-  courseCardLetters: '#E1F18C',
-  chipBadgeMutedText: '#6A8282',
+  aiBuddyBanner: palette.buddyBlue,
+  courseCardColors: palette.coursePurple,
+  courseCardLetters: palette.courseLime,
+  chipBadgeMutedText: palette.mutedChipText,
 } as const;
 
 // ─── Shared card / label colors ───────────────────────────────────────────────
 export const cardColors = {
-  buttonLabel: '#073647',
-  categoryLabelPurple: '#9881B3',
-  categoryLabelGreen: '#708892',
+  buttonLabel: palette.buttonLabel,
+  categoryLabelPurple: palette.categoryPurple,
+  categoryLabelGreen: palette.gray,
 } as const;
 
 // ─── Lesson cards (frame 1:1150) ──────────────────────────────────────────────
 export const lessonCardColors = {
-  aForApple: '#F4EFD7',
-  bForBall: '#FFE9E9',
-  cForCat: '#E5CDFF',
-  dForDog: '#D7EAF8',
-  eForElephant: '#F9E9DC',
-  heroBackground: '#DCEA8F',
+  aForApple: palette.apple,
+  bForBall: palette.ball,
+  cForCat: palette.coursePurple,
+  dForDog: palette.dog,
+  eForElephant: palette.elephant,
+  heroBackground: palette.heroLime,
 } as const;
 
 // ─── Icon / avatar ────────────────────────────────────────────────────────────
@@ -69,17 +92,17 @@ export const iconColors = {
 
 // ─── Progress ─────────────────────────────────────────────────────────────────
 export const progressColors = {
-  completed: '#7CA62B',
-  completedLight: '#D4E5B8',
-  incomplete: '#F5F5F5',
+  completed: palette.progressGreen,
+  completedLight: palette.progressGreenLight,
+  incomplete: palette.progressGray,
   activeTick: '#5A9F3B',
   inactiveTick: 'rgba(193,199,202,0.6)',
   activeSegment: 'rgba(90,160,43,0.25)',
   inactiveSegment: 'rgba(255,255,255,0.6)',
   progressRingBackground: '#686F3E33',
-  chartInactive: '#F5F5F5',
-  chartActive: '#7CA62B',
-  chartTooltip: '#7CA62B',
+  chartInactive: palette.progressGray,
+  chartActive: palette.progressGreen,
+  chartTooltip: palette.progressGreen,
 } as const;
 
 // ─── Analytics (frame 1:825) ──────────────────────────────────────────────────
@@ -87,7 +110,7 @@ export const analyticsColors = {
   skillProgressCard: '#E5F2F9',
   analyticsCard: '#F1F1F180',
   aiBuddyBannerBackground: '#E8EFF5',
-  activeBarSelectedPill: '#1C274C',
+  activeBarSelectedPill: palette.navy,
   streakActive: 'rgba(90,160,43,0.19)',
   streakInactive: 'rgba(255,255,255,0.49)',
 } as const;
@@ -108,7 +131,7 @@ export const overlayColors = {
   translucentWhiteStrong: '#FFFFFFD6',
   translucentWhiteButton: '#FFFFFF66',
   translucentWhiteLesson: '#FFFFFF61',
-  translucentWhiteBorder: '#FFFFFF',
+  translucentWhiteBorder: palette.white,
   translucentBorder: '#0000000D',
   translucentBlue: 'rgba(28,39,76,0.5)',
   translucentBlueLight: 'rgba(28,39,76,0.2)',

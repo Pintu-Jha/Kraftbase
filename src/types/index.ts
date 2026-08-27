@@ -45,6 +45,18 @@ export interface SkillProgress {
   barColor?: string;
 }
 
+export interface SkillCategory {
+  name: string;
+  value: number;
+  improvement?: number;
+}
+
+export interface WeeklyData {
+  day: string;
+  value: number;
+  isToday?: boolean;
+}
+
 export interface AnalyticsData {
   streakDays: StreakDay[];
   currentStreak: number;

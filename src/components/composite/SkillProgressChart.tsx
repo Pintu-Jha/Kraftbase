@@ -6,14 +6,18 @@ import type { SkillProgress } from '../../types/index';
 import { colors, fontFamilies } from '../../theme';
 import { textScale } from '../../theme/responsive';
 
-interface SkillProgressChartProps {
+export interface SkillProgressChartProps {
   data: SkillProgress[];
   maxBarHeight?: number;
+  activeIndex?: number;
+  growthPercent?: number;
 }
 
 export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
   data,
   maxBarHeight = 120,
+  activeIndex = 0,
+  growthPercent = 30,
 }) => {
   const barWidth = 42;
   const barRadius = 21; // top pill
@@ -29,8 +33,8 @@ export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
       >
         {data.map((item, index) => {
           const barHeight = Math.max(item.progress * maxBarHeight, 8);
-          const isActive = index === 0; // highlight first bar as selected
-          const growthPercent = index === 0 ? 30 : 0; // Show +30% badge on first bar
+          const isActive = index === activeIndex;
+          const itemGrowthPercent = index === activeIndex ? growthPercent : 0;
           
           return (
             <View key={item.skill} style={styles.barColumn}>
@@ -57,7 +61,7 @@ export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
                 </Svg>
                 
                 {/* +30% tooltip badge with blur for active bar */}
-                {growthPercent > 0 ? (
+                {itemGrowthPercent > 0 ? (
                   <View style={styles.tooltipContainer}>
                     <BlurCard
                       intensity={88}
@@ -67,7 +71,7 @@ export const SkillProgressChart: React.FC<SkillProgressChartProps> = ({
                       style={styles.tooltipBlur}
                     >
                       <View style={styles.tooltip}>
-                        <Text style={styles.tooltipText}>+{growthPercent}%</Text>
+                        <Text style={styles.tooltipText}>+{itemGrowthPercent}%</Text>
                       </View>
                     </BlurCard>
                   </View>

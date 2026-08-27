@@ -1,7 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from 'react-native';
-import { colors, fontFamilies } from '../../../theme';
-import { textScale } from '../../../theme/responsive';
+import { colors, fontFamilies, getTextStyle } from '../../../theme';
 
 interface ButtonProps {
   label: string;
@@ -41,9 +40,7 @@ const styles = StyleSheet.create({
     borderColor: colors.btn,
   },
   label: {
-    fontSize: textScale(16),
-    letterSpacing: -0.176,
-    fontFamily: fontFamilies.interSemiBold,
+    ...getTextStyle('base', fontFamilies.interSemiBold),
   },
   labelFilled: {
     color: colors.white,

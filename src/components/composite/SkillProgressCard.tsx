@@ -9,20 +9,10 @@ import {
 import { scale, textScale } from '../../theme/responsive';
 import { StripedProgressBar } from './StripedProgressBar';
 import { colors } from '../../theme';
+import { DEFAULT_SKILL_CATEGORIES, DEFAULT_WEEKLY_DATA } from '../../types/mockData';
+import type { SkillCategory, WeeklyData } from '../../types';
 
 type TimeFilter = 'This Week' | 'This Month' | 'All Time';
-
-interface SkillCategory {
-  name: string;
-  value: number;
-  improvement?: number;
-}
-
-interface WeeklyData {
-  day: string;
-  value: number;
-  isToday?: boolean;
-}
 
 interface SkillProgressCardProps {
   categories?: SkillCategory[];
@@ -30,26 +20,9 @@ interface SkillProgressCardProps {
   timeFilter?: TimeFilter;
 }
 
-const defaultCategories: SkillCategory[] = [
-  { name: 'Letters', value: 0.65, improvement: 30 },
-  { name: 'Colors', value: 0.75 },
-  { name: 'Shapes', value: 0.82 },
-  { name: 'Animals', value: 0.55 },
-];
-
-const defaultWeeklyData: WeeklyData[] = [
-  { day: 'Mon', value: 0.45 },
-  { day: 'Tue', value: 0.78 },
-  { day: 'Wed', value: 0.68 },
-  { day: 'Thu', value: 0.95, isToday: true },
-  { day: 'Fri', value: 0.52 },
-  { day: 'Sat', value: 0.35 },
-  { day: 'Sun', value: 0.72 },
-];
-
 export const SkillProgressCard: React.FC<SkillProgressCardProps> = ({
-  categories = defaultCategories,
-  weeklyData = defaultWeeklyData,
+  categories = DEFAULT_SKILL_CATEGORIES,
+  weeklyData = DEFAULT_WEEKLY_DATA,
   timeFilter = 'This Week',
 }) => {
   const [selectedCategory, setSelectedCategory] =
