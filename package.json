@@ -31,7 +31,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .ts,.tsx",
+    "validate": "npm run typecheck && npm run lint"
   },
   "private": true
 }

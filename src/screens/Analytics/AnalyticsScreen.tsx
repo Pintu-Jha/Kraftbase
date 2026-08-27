@@ -14,7 +14,7 @@ import type { AnalyticsScreenProps } from '../../navigation/types';
 import { colors } from '../../theme';
 import { textScale } from '../../theme/responsive';
 
-export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = ({ navigation }) => {
+export const AnalyticsScreen: React.FC<AnalyticsScreenProps> = () => {
 
   return (
     <SafeAreaView style={styles.safe}>

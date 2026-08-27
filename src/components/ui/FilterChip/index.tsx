@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     paddingLeft: 17,
   },
   chipInactive: {
-    backgroundColor: 'transparent',
+    backgroundColor: colors.transparent,
     borderWidth: 1,
     borderColor: colors.translucentBorder,
     paddingLeft: 8,

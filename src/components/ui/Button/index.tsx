@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.btn,
   },
   outline: {
-    backgroundColor: 'transparent',
+    backgroundColor: colors.transparent,
     borderWidth: 1.5,
     borderColor: colors.btn,
   },

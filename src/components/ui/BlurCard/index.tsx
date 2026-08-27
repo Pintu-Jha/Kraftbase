@@ -21,7 +21,7 @@ export const BlurCard: React.FC<BlurCardProps> = ({
   backgroundColor,
 }) => {
   return (
-    <View style={[{ borderRadius, overflow: 'hidden' }, style]}>
+    <View style={[styles.wrapper, { borderRadius }, style]}>
       <BlurView
         intensity={intensity}
         tint={tint}
@@ -41,6 +41,9 @@ export const BlurCard: React.FC<BlurCardProps> = ({
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    overflow: 'hidden',
+  },
   content: {
     position: 'relative',
   },

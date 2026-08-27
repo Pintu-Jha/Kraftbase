@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { IconButton } from '../IconButton';
+import { colors } from '../../../theme';
 
 interface NotificationButtonProps {
   hasNotifications?: boolean;
@@ -35,6 +36,6 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#FF4444',
+    backgroundColor: colors.alert,
   },
 });

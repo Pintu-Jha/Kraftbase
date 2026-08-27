@@ -7,6 +7,7 @@ import {
   verticalScale,
   textScale,
 } from '../../theme/responsive';
+import { colors } from '../../theme';
 
 export type LessonStatus = 'completed' | 'current' | 'locked';
 
@@ -142,6 +143,8 @@ export const LessonProgressIndicator: React.FC<
   );
 });
 
+LessonProgressIndicator.displayName = 'LessonProgressIndicator';
+
 const styles = StyleSheet.create({
   container: {
     width: NODE_SIZE,
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: INNER_SIZE / 2,
     backgroundColor: COMPLETED_COLOR,
     borderWidth: scale(4),
-    borderColor: '#FFFFFF',
+    borderColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -190,11 +193,11 @@ const styles = StyleSheet.create({
     borderRadius: INNER_SIZE / 2,
     backgroundColor: CURRENT_BG,
     borderWidth: scale(2),
-    borderColor: '#FFFFFF',
+    borderColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
 
-    shadowColor: '#000',
+    shadowColor: colors.shadow,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -219,9 +222,9 @@ const styles = StyleSheet.create({
     width: INNER_SIZE,
     height: INNER_SIZE,
     borderRadius: INNER_SIZE / 2,
-    backgroundColor: 'rgba(255,255,255,0.78)',
+    backgroundColor: colors.lessonProgressLockedInner,
     borderWidth: scale(1),
-    borderColor: 'rgba(180,190,205,0.28)',
+    borderColor: colors.lessonProgressLockedBorder,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -229,7 +232,7 @@ const styles = StyleSheet.create({
   lessonNumber: {
     fontSize: textScale(18),
     fontFamily: 'Inter-Regular',
-    color: '#161A34',
+    color: colors.darkIconButtonBg,
     letterSpacing: -0.4,
   },
 

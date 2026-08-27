@@ -5,6 +5,7 @@ import { scale, verticalScale, moderateScale, textScale } from '../../theme/resp
 import { colors } from '../../theme/colors';
 import Svg, { Circle, G } from 'react-native-svg';
 import { ProgressRing } from '../../assets/icons/svg/ProgressRing';
+import aiBuddyImage from '../../assets/icons/Static/AIBuddy.png';
 
 interface AiBuddyProgressProps {
   message: string;
@@ -35,7 +36,7 @@ export const AiBuddyProgress: React.FC<AiBuddyProgressProps> = ({
         <View style={styles.leftGroup}>
           <View style={styles.avatarContainer}>
             <Image
-              source={require('../../assets/icons/Static/AIBuddy.png')}
+              source={aiBuddyImage}
               style={styles.avatarImage}
               resizeMode="contain"
             />

@@ -23,14 +23,6 @@ function getUniformScaleFactor(): number {
   return clamp(Math.min(widthFactor, heightFactor), MIN_SCALE_FACTOR, MAX_SCALE_FACTOR);
 }
 
-function getScaleFactor(): number {
-  return getUniformScaleFactor();
-}
-
-function getVerticalScaleFactor(): number {
-  return getUniformScaleFactor();
-}
-
 export function scale(size: number): number {
   return PixelRatio.roundToNearestPixel(size * getUniformScaleFactor());
 }

@@ -6,7 +6,6 @@ import { ProgressPlayButton } from '../ui/ProgressPlayButton';
 import { AiBuddyCardCurve } from '../../assets/illustrations/AiBuddyCardCurve';
 import { KidWithPen } from '../../assets/illustrations/KidWithPen';
 import { BulbIcon } from '../../assets/icons/svg/Bulb';
-import { StarIcon } from '../../assets/icons/svg/StarIcon';
 import { Lessons } from '../../assets/icons/svg/Lesson';
 import { Clock } from '../../assets/icons/svg/Clock';
 import { scale, verticalScale, textScale } from '../../theme/responsive';
@@ -49,7 +48,7 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
           </View>
           <View style={styles.textBlock}>
             <Text style={styles.labelText}>Your A.i buddy</Text>
-            <Text style={styles.mainText}>You're learning great today!</Text>
+            <Text style={styles.mainText}>You&apos;re learning great today!</Text>
           </View>
         </View>
       </View>
@@ -63,7 +62,7 @@ export const AiBuddyBanner: React.FC<AiBuddyBannerProps> = ({
       >
         <View style={styles.bottomSection}>
           <View style={styles.pickInfo}>
-            <Text style={styles.pickTitle}>Today's pick: {category}</Text>
+            <Text style={styles.pickTitle}>Today&apos;s pick: {category}</Text>
 
             <View style={styles.metaRow}>
               <View style={styles.metaItem}>
@@ -150,17 +149,6 @@ const styles = StyleSheet.create({
     height: scale(44),
     position: 'relative',
   },
-  starTop: {
-    position: 'absolute',
-    top: verticalScale(-8),
-    left: scale(-8),
-    zIndex: 1,
-  },
-  starBottom: {
-    position: 'absolute',
-    bottom: verticalScale(-2),
-    right: scale(-10),
-  },
   textBlock: {
     // flex: 1,
     gap: 2,
@@ -210,7 +198,7 @@ const styles = StyleSheet.create({
     width: scale(4),
     height: scale(4),
     borderRadius: scale(2),
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: colors.mutedBlack,
     marginHorizontal: scale(4),
   },
   metaText: {

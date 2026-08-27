@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ViewStyle, ImageSourcePropType } from 'react-native';
+import { colors } from '../../../theme';
 
 interface AvatarProps {
   size?: number;
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     lineHeight: undefined, // Let emoji size naturally
   },
   initials: {
-    color: '#FFFFFF',
+    color: colors.white,
     fontFamily: 'Inter-SemiBold',
     letterSpacing: -0.176,
   },

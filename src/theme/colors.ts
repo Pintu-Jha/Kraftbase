@@ -22,6 +22,8 @@ const palette = {
   lessonProgressCurrent: '#DDE9F4',
   lessonProgressLocked: 'rgba(180,190,205,0.14)',
   lessonProgressLockedLine: 'rgba(180,190,205,0.12)',
+  lessonProgressLockedInner: 'rgba(255,255,255,0.78)',
+  lessonProgressLockedBorder: 'rgba(180,190,205,0.28)',
   lessonProgressRail: 'rgba(124,166,43,0.3)',
   badgeActive: 'rgba(255,255,255,0.25)',
   badgeInactive: 'rgba(28,39,76,0.08)',

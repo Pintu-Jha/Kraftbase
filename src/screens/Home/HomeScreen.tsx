@@ -56,7 +56,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 
         {/* Let's learn header */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Let's learn</Text>
+          <Text style={styles.sectionTitle}>Let&apos;s learn</Text>
         </View>
 
         {/* Category chips */}

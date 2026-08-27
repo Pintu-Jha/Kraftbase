@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Avatar } from '../ui/Avatar';
 import { LanguageSelector } from '../ui/LanguageSelector';
 import { NotificationButton } from '../ui/NotificationButton';
-import { colors, fontFamilies } from '../../theme';
+import { colors } from '../../theme';
 import { textScale } from '../../theme/responsive';
 
 interface HeaderRowProps {

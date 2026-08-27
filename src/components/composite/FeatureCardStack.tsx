@@ -57,7 +57,7 @@ export const FeatureCardStack: React.FC = () => {
             </View>
 
             <Text style={styles.bodyText}>
-              Lessons adapt to your child's pace, focusing on what they need most.
+              Lessons adapt to your child&apos;s pace, focusing on what they need most.
             </Text>
 
             <View style={styles.pagination}>
@@ -201,17 +201,5 @@ const styles = StyleSheet.create({
     top: verticalScale(-15),
     left: 0,
     zIndex: 3,
-  },
-  emojiAccent1: {
-    position: 'absolute',
-    fontSize: textScale(24),
-    top: verticalScale(70),
-    right: scale(60),
-  },
-  emojiAccent2: {
-    position: 'absolute',
-    fontSize: textScale(20),
-    bottom: verticalScale(120),
-    left: scale(20),
   },
 });

@@ -115,12 +115,6 @@ const styles = StyleSheet.create({
     borderRadius:moderateScale(28)
   },
 
-  content: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-  },
-
   textSection: {
     flex: 1,
     paddingRight: scale(100),

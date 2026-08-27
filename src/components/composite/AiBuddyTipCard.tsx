@@ -6,8 +6,8 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { Fire } from '../../assets/illustrations/Fire';
 import { Close } from '../../assets/icons/svg/Close';
+import aiBuddyImage from '../../assets/icons/Static/AIBuddy.png';
 import { colors } from '../../theme';
 import { scale, textScale } from '../../theme/responsive';
 
@@ -34,7 +34,7 @@ export const AiBuddyTipCard: React.FC<AiBuddyTipCardProps> = ({
       <View style={styles.content}>
         <View style={styles.iconWrapper}>
           <Image
-            source={require('../../assets/icons/Static/AIBuddy.png')}
+            source={aiBuddyImage}
             style={styles.buddyIcon}
             resizeMode="contain"
           />

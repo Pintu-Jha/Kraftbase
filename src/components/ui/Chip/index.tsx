@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.btn,
   },
   chipFilledInactive: {
-    backgroundColor: 'transparent',
+    backgroundColor: colors.transparent,
   },
   chipOutline: {
     borderRadius: 56,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   labelFilledActive: {
     ...getTextStyle('xs', fontFamilies.interMedium),
-    color: '#FFFFFF',
+    color: colors.white,
   },
   labelFilledInactive: {
     ...getTextStyle('xs', fontFamilies.interMedium),

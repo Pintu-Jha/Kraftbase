@@ -180,22 +180,10 @@ const styles = StyleSheet.create({
     height: verticalScale(8),
   },
 
-  sectionLabel: {
-    fontSize: textScale(13),
-    letterSpacing: -0.143,
-    fontFamily: 'Inter-Medium',
-    color: colors.gray,
-    marginBottom: verticalScale(12),
-  },
-
   emptyState: {
     alignItems: 'center',
     paddingTop: verticalScale(60),
     gap: verticalScale(8),
-  },
-
-  emptyEmoji: {
-    fontSize: textScale(48),
   },
 
   emptyTitle: {
