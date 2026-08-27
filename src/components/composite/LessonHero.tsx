@@ -50,10 +50,12 @@ export const LessonHero: React.FC<LessonHeroProps> = ({
         {/* Text Section */}
         <View style={styles.textSection}>
           <Text style={styles.category}>{category}</Text>
-          <Text style={styles.title}>
-            {title}
-            <Text style={styles.subtitle}> {subtitle}</Text>
-          </Text>
+          <View>
+            <Text style={styles.title} numberOfLines={3} adjustsFontSizeToFit>
+              {title}
+              <Text style={styles.subtitle}> {subtitle}</Text>
+            </Text>
+          </View>
 
           {/* Info Chips */}
           <View style={styles.chipsRow}>
@@ -73,8 +75,8 @@ export const LessonHero: React.FC<LessonHeroProps> = ({
         {/* Illustration */}
         <View style={styles.illustrationContainer}>
           <KidWithLearn 
-            width={scale(220)} 
-            height={verticalScale(260)} 
+            width={scale(200)} 
+            height={verticalScale(240)} 
           />
         </View>
       </View>
@@ -105,7 +107,8 @@ const styles = StyleSheet.create({
   textSection: {
     flex: 1,
     gap: verticalScale(12),
-    paddingRight: scale(16),
+    paddingRight: scale(100),
+    maxWidth: '65%',
     zIndex: 2,
   },
   category: {
@@ -120,12 +123,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-SemiBold',
     color: colors.black,
     lineHeight: textScale(38),
+    flexShrink: 1,
   },
   subtitle: {
     fontSize: textScale(32),
     letterSpacing: -0.352,
     fontFamily: 'Inter-Medium',
     color: colors.black,
+    flexShrink: 1,
   },
   chipsRow: {
     flexDirection: 'row',
@@ -134,8 +139,8 @@ const styles = StyleSheet.create({
   },
   illustrationContainer: {
     position: 'absolute',
-    right: scale(-20),
-    top: verticalScale(-20),
+    right: scale(-30),
+    top: verticalScale(20),
     zIndex: 1,
   },
 });
