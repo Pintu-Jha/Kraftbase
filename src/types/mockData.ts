@@ -89,11 +89,11 @@ export const MOCK_ANALYTICS: AnalyticsData = {
   streakDays: [
     { day: 'Mon', isActive: true, count: 3 },
     { day: 'Tue', isActive: true, count: 5 },
-    { day: 'Wed', isActive: false, count: 0 },
+    { day: 'Wed', isActive: true, count: 0 },
     { day: 'Thu', isActive: true, count: 4 },
-    { day: 'Fri', isActive: true, count: 6 },
+    { day: 'Fri', isActive: false, count: 6 },
     { day: 'Sat', isActive: false, count: 0 },
-    { day: 'Sun', isActive: true, count: 2 },
+    { day: 'Sun', isActive: false, count: 2 },
   ],
   currentStreak: 5,
   skillProgress: [

@@ -1,51 +1,109 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Fire } from '../../assets/illustrations/Fire';
 import type { StreakDay } from '../../types/index';
+import { colors } from '../../theme';
+
+const ACTIVE_TICK_COLOR = '#5A9F3B';
+const INACTIVE_TICK_COLOR = 'rgba(193,199,202,0.6)';
 
 interface StreakTrackerProps {
   days: StreakDay[];
   currentStreak: number;
+  totalGoal?: number;
 }
 
-export const StreakTracker: React.FC<StreakTrackerProps> = ({ days, currentStreak }) => {
+export const StreakTracker: React.FC<StreakTrackerProps> = ({
+  days,
+  currentStreak,
+  totalGoal = 5000,
+}) => {
+  const activeDaysCount = days.filter(d => d.isActive).length;
+  const progressPercentage = (activeDaysCount / days.length) * 100;
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.streakTitle}>Your streak</Text>
-        <Text style={styles.streakCount}>{currentStreak} days 🔥</Text>
+        <View style={styles.streakCountBadge}>
+          <Text style={styles.streakCount}>
+            <Text style={styles.streakCountBold}>{currentStreak}</Text>
+            <Text style={styles.streakCountLight}>/{totalGoal}</Text>
+          </Text>
+        </View>
       </View>
 
-      <View style={styles.daysRow}>
-        {days.map((dayItem, index) => (
-          <View key={dayItem.day} style={styles.dayGroup}>
-            {/* Connector bar (except first) */}
-            {index > 0 ? (
-              <View
-                style={[
-                  styles.connector,
-                  dayItem.isActive ? styles.connectorActive : styles.connectorInactive,
-                ]}
-              />
-            ) : null}
+      <View style={styles.progressSection}>
+        {/* Progress Bar */}
+        <View style={styles.progressBarContainer}>
+          <View style={styles.progressBarBackground}>
+            {/* Active segments */}
+            {days.map((dayItem, index) => {
+              const segmentWidth = 100 / days.length;
+              return (
+                <View
+                  key={index}
+                  style={[
+                    styles.progressSegment,
+                    {
+                      width: `${segmentWidth}%`,
+                      backgroundColor: dayItem.isActive
+                        ? 'rgba(90,160,43,0.25)'
+                        : 'rgba(255,255,255,0.6)',
+                    },
+                  ]}
+                />
+              );
+            })}
+          </View>
 
-            {/* Day circle */}
-            <View
+          {/* Tick marks — one centered inside each day segment */}
+          <View style={styles.tickMarksContainer} pointerEvents="none">
+            {days.map((dayItem, index) => {
+              const segmentWidth = 100 / days.length;
+              const centerPercent = segmentWidth * (index + 0.6);
+              return (
+                <View
+                  key={index}
+                  style={[
+                    styles.tickMark,
+                    {
+                      left: `${centerPercent}%`,
+                      backgroundColor: dayItem.isActive
+                        ? ACTIVE_TICK_COLOR
+                        : INACTIVE_TICK_COLOR,
+                    },
+                  ]}
+                />
+              );
+            })}
+          </View>
+
+          {/* Fire Icon badge positioned on progress bar */}
+          <View
+            style={[
+              styles.fireIconContainer,
+              { left: `${Math.min(progressPercentage, 95)}%` },
+            ]}
+          >
+            <Fire />
+          </View>
+        </View>
+
+        {/* Day Labels */}
+        <View style={styles.daysLabelsRow}>
+          {days.map((dayItem, index) => (
+            <Text
+              key={index}
               style={[
-                styles.dayCircle,
-                dayItem.isActive ? styles.dayCircleActive : styles.dayCircleInactive,
+                styles.dayLabel,
+                dayItem.isActive ? styles.dayLabelActive : styles.dayLabelInactive,
               ]}
             >
-              <Text
-                style={[
-                  styles.dayLabel,
-                  dayItem.isActive ? styles.dayLabelActive : styles.dayLabelInactive,
-                ]}
-              >
-                {dayItem.day}
-              </Text>
-            </View>
-          </View>
-        ))}
+              {dayItem.day}
+            </Text>
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -53,7 +111,6 @@ export const StreakTracker: React.FC<StreakTrackerProps> = ({ days, currentStrea
 
 const styles = StyleSheet.create({
   container: {
-    gap: 14,
   },
   header: {
     flexDirection: 'row',
@@ -62,58 +119,95 @@ const styles = StyleSheet.create({
   },
   streakTitle: {
     fontSize: 20,
-    letterSpacing: -0.22,
+    letterSpacing: -1.1,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.black,
+  },
+  streakCountBadge: {
+    backgroundColor: colors.white,
+    borderRadius: 24,
+    paddingVertical: 10,
   },
   streakCount: {
-    fontSize: 14,
-    letterSpacing: -0.154,
+    letterSpacing: -0.22,
     fontFamily: 'Inter-Medium',
-    color: '#708892',
   },
-  daysRow: {
+  streakCountBold: {
+    color: '#010000',
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 22,
+  },
+  streakCountLight: {
+    color: '#9BA5AA',
+    fontFamily: 'Inter-Medium',
+    fontSize: 22,
+  },
+  progressSection: {
+    gap: 12,
+  },
+  progressBarContainer: {
+    position: 'relative',
+    height: 48,
+  },
+  progressBarBackground: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    height: 34,
+    borderRadius: 24,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(255,255,255,0.6)',
   },
-  dayGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flex: 1,
+  progressSegment: {
+    height: '100%',
   },
-  connector: {
-    flex: 1,
-    height: 2,
-  },
-  connectorActive: {
-    backgroundColor: 'rgba(90,160,43,0.19)',
-  },
-  connectorInactive: {
-    backgroundColor: 'rgba(255,255,255,0.49)',
-  },
-  dayCircle: {
+  fireIconContainer: {
+    position: 'absolute',
+    top: '50%',
+    marginTop: -30,
+    marginLeft: -40,
     width: 47,
     height: 47,
-    borderRadius: 999,
+    borderRadius: 47/2,
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 4,
+    zIndex: 10,
   },
-  dayCircleActive: {
-    backgroundColor: 'rgba(90,160,43,0.19)',
+  tickMarksContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 34,
   },
-  dayCircleInactive: {
-    backgroundColor: 'rgba(244,243,243,0.5)',
+  tickMark: {
+    position: 'absolute',
+    bottom: '30%',
+    top:'30%',
+    width: 1,
+    height:'40%',
+    borderRadius: 1
+  },
+  daysLabelsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 4,
   },
   dayLabel: {
-    fontSize: 12,
-    letterSpacing: -0.132,
+    fontSize: 14,
+    letterSpacing: -0.154,
     fontFamily: 'Inter-SemiBold',
+    flex: 1,
+    textAlign: 'center',
   },
   dayLabelActive: {
-    color: '#7CA62B',
+    color: '#010000',
   },
   dayLabelInactive: {
-    color: '#708892',
+    color: '#C1C7CA',
   },
 });
