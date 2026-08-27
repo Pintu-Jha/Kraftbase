@@ -45,7 +45,7 @@ export const LessonHero: React.FC<LessonHeroProps> = ({
           height={verticalScale(292)}
         />
       </View>
-        <Pressable style={styles.backButtonBlur}>
+        <Pressable style={styles.backButtonBlur} onPress={onBackPress}>
         <Back  />
         </Pressable>
 
