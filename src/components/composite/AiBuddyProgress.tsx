@@ -89,7 +89,6 @@ export const AiBuddyProgress: React.FC<AiBuddyProgressProps> = ({
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: scale(20),
-    marginBottom: verticalScale(20),
   },
   content: {
     flexDirection: 'row',

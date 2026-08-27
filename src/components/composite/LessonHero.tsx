@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: moderateScale(32),
     paddingHorizontal: scale(20),
     paddingTop: verticalScale(16),
-    paddingBottom: verticalScale(20),
-    overflow: 'hidden',
+    paddingBottom: verticalScale(100),
+    overflow: 'visible',
   },
   backButtonBlur: {
     width: scale(48),
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: verticalScale(12),
     paddingRight: scale(16),
+    zIndex: 2,
   },
   category: {
     fontSize: textScale(14),
@@ -134,6 +135,7 @@ const styles = StyleSheet.create({
   illustrationContainer: {
     position: 'absolute',
     right: scale(-20),
-    bottom: verticalScale(-40),
+    top: verticalScale(-20),
+    zIndex: 1,
   },
 });

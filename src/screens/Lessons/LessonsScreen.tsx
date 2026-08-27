@@ -22,21 +22,25 @@ export const LessonsScreen: React.FC<LessonsScreenProps> = ({ navigation, route 
     <SafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" />
 
-      {/* Hero section with illustration */}
-      <LessonHero
-        category="Letters"
-        title="Learn ABC"
-        subtitle="with fun sounds"
-        lessonCount={MOCK_LESSONS.length}
-        duration="1hr 30 min"
-        onBackPress={() => navigation.goBack()}
-      />
+      <View style={styles.heroContainer}>
+        {/* Hero section with illustration */}
+        <LessonHero
+          category="Letters"
+          title="Learn ABC"
+          subtitle="with fun sounds"
+          lessonCount={MOCK_LESSONS.length}
+          duration="1hr 30 min"
+          onBackPress={() => navigation.goBack()}
+        />
 
-      {/* AI Buddy Progress Banner */}
-      <AiBuddyProgress
-        message="You're learning great today!"
-        progress={12}
-      />
+        {/* AI Buddy Progress Banner - positioned absolutely to overlap */}
+        <View style={styles.aiBuddyWrapper}>
+          <AiBuddyProgress
+            message="You're learning great today!"
+            progress={12}
+          />
+        </View>
+      </View>
 
       {/* Lesson list */}
       <ScrollView
@@ -68,6 +72,17 @@ const styles = StyleSheet.create({
   safe: {
     flex: 1,
     backgroundColor: colors.heroBackground,
+  },
+  heroContainer: {
+    position: 'relative',
+    marginBottom: verticalScale(60),
+  },
+  aiBuddyWrapper: {
+    position: 'absolute',
+    bottom: verticalScale(-60),
+    left: 0,
+    right: 0,
+    zIndex: 10,
   },
   listContainer: {
     flex: 1,
