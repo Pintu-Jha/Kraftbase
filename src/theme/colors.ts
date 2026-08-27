@@ -55,6 +55,7 @@ export const iconColors = {
 // ─── Progress ─────────────────────────────────────────────────────────────────
 export const progressColors = {
   completed: '#7CA62B',
+  completedLight: '#D4E5B8',
   incomplete: '#F5F5F5',
 } as const;
 

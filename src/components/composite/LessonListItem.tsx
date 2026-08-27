@@ -57,8 +57,7 @@ export const LessonListItem: React.FC<LessonListItemProps> = ({ lesson, onPress 
 const styles = StyleSheet.create({
   container: {
     borderRadius: moderateScale(32),
-    padding:scale(20),
-    marginBottom: verticalScale(12),
+    padding: scale(20),
   },
   topRow: {
     flexDirection: 'row',
