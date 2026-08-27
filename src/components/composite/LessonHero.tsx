@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 
-import { BlurCard } from '../ui/BlurCard';
-import { IconButton } from '../ui/IconButton';
 import { Chip } from '../ui/Chip';
 import { AiBuddyProgress } from './AiBuddyProgress';
 
