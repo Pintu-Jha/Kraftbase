@@ -1,82 +1,54 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, Circle } from 'react-native-svg';
 import type { Lesson } from '../../types/index';
+import { scale, verticalScale, moderateScale, textScale } from '../../theme/responsive';
+import { colors } from '../../theme';
+import { Play } from '../../assets/icons/svg/Play';
 
 interface LessonListItemProps {
   lesson: Lesson;
   onPress?: () => void;
 }
 
-const PlayIcon = () => (
-  <Svg width={12} height={14} viewBox="0 0 12 14" fill="none">
-    <Path d="M1 1.5L11 7L1 12.5V1.5Z" fill="#FFFFFF" />
-  </Svg>
-);
 
-const LockIcon = () => (
-  <Svg width={14} height={16} viewBox="0 0 14 16" fill="none">
-    <Path
-      d="M11 7V5C11 2.79 9.21 1 7 1C4.79 1 3 2.79 3 5V7H2C1.45 7 1 7.45 1 8V14C1 14.55 1.45 15 2 15H12C12.55 15 13 14.55 13 14V8C13 7.45 12.55 7 12 7H11ZM7 11.5C6.17 11.5 5.5 10.83 5.5 10C5.5 9.17 6.17 8.5 7 8.5C7.83 8.5 8.5 9.17 8.5 10C8.5 10.83 7.83 11.5 7 11.5ZM9 7H5V5C5 3.9 5.9 3 7 3C8.1 3 9 3.9 9 5V7Z"
-      fill="#708892"
-    />
-  </Svg>
-);
 
-const CheckIcon = () => (
-  <Svg width={14} height={11} viewBox="0 0 14 11" fill="none">
-    <Path
-      d="M1 5.5L5 9.5L13 1.5"
-      stroke="#7CA62B"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+const ClockIcon = () => (
+  <Svg width={14} height={14} viewBox="0 0 14 14" fill="none">
+    <Circle cx={7} cy={7} r={6.5} stroke="#161A34" strokeWidth={1} fill="none" />
+    <Path d="M7 3.5V7L9.5 9.5" stroke="#161A34" strokeWidth={1} strokeLinecap="round" />
   </Svg>
 );
 
 export const LessonListItem: React.FC<LessonListItemProps> = ({ lesson, onPress }) => {
-  const isLocked = lesson.status === 'locked';
-  const isCompleted = lesson.status === 'completed';
-
   return (
     <TouchableOpacity
-      style={[
-        styles.container,
-        { backgroundColor: lesson.backgroundColor },
-        isLocked && styles.lockedOpacity,
-      ]}
-      onPress={isLocked ? undefined : onPress}
-      activeOpacity={isLocked ? 1 : 0.8}
+      style={[styles.container, { backgroundColor: lesson.backgroundColor }]}
+      onPress={onPress}
+      activeOpacity={0.8}
     >
-      {/* Text side */}
-      <View style={styles.textArea}>
-        <Text style={[styles.title, isLocked && styles.lockedText]}>{lesson.title}</Text>
-        {lesson.status === 'active' && lesson.progress !== undefined ? (
-          <View style={styles.progressRow}>
-            <View style={styles.progressRail}>
-              <View
-                style={[
-                  styles.progressFill,
-                  { width: `${lesson.progress * 100}%` as `${number}%` },
-                ]}
-              />
-            </View>
-            <Text style={styles.progressLabel}>{Math.round(lesson.progress * 100)}%</Text>
-          </View>
-        ) : null}
-        {isCompleted ? <Text style={styles.completedLabel}>Completed</Text> : null}
-        {isLocked ? <Text style={styles.lockedLabel}>Locked</Text> : null}
+      {/* Top row: Title and Duration */}
+      <View style={styles.topRow}>
+        <Text style={styles.title} numberOfLines={1}>
+          {lesson.title}
+        </Text>
+        <View style={styles.durationBadge}>
+          <ClockIcon />
+          <Text style={styles.durationText}>{lesson.duration}</Text>
+        </View>
       </View>
 
-      {/* Action icon */}
-      <View
-        style={[
-          styles.iconCircle,
-          isLocked ? styles.iconLocked : isCompleted ? styles.iconCompleted : styles.iconActive,
-        ]}
-      >
-        {isLocked ? <LockIcon /> : isCompleted ? <CheckIcon /> : <PlayIcon />}
+      {/* Bottom row: Description and Replay button */}
+      <View style={styles.bottomRow}>
+        <Text style={styles.description} numberOfLines={2}>
+          {lesson.description}
+        </Text>
+        <View style={styles.replayButton}>
+          <Text style={styles.replayText}>{lesson.buttonText ?? 'Start'}</Text>
+          <View style={styles.playCircle}>
+            <Play fill={'#fff'} width={scale(10)} height={scale(10)}/>
+          </View>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -84,80 +56,89 @@ export const LessonListItem: React.FC<LessonListItemProps> = ({ lesson, onPress 
 
 const styles = StyleSheet.create({
   container: {
-    height: 96,
-    borderRadius: 24,
-    paddingHorizontal: 16,
+    borderRadius: moderateScale(32),
+    padding:scale(20),
+    marginBottom: verticalScale(12),
+  },
+  topRow: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 10,
-  },
-  lockedOpacity: {
-    opacity: 0.6,
-  },
-  textArea: {
-    flex: 1,
-    marginRight: 12,
-    gap: 6,
+    alignItems: 'center',
+    marginBottom: verticalScale(12),
   },
   title: {
-    fontSize: 16,
-    letterSpacing: -0.176,
+    flex: 1,
+    fontSize: textScale(16),
+    letterSpacing: -1.1,
     fontFamily: 'Inter-SemiBold',
     color: '#010000',
   },
-  lockedText: {
-    color: '#708892',
-  },
-  progressRow: {
+  durationBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: scale(4),
+    backgroundColor:'#FFFFFF61',
+    paddingVertical:verticalScale(6),
+    paddingHorizontal:scale(8),
+    borderRadius:moderateScale(24)
   },
-  progressRail: {
+  durationText: {
+    fontSize: textScale(10),
+    letterSpacing: -0.154,
+    fontFamily: 'Inter-SemiBold',
+    color: '#161A34',
+  },
+  bottomRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: scale(12),
+  },
+  description: {
     flex: 1,
-    height: 4,
-    backgroundColor: '#F5F5F5',
-    borderRadius: 999,
-    overflow: 'hidden',
+    fontSize: textScale(12),
+    letterSpacing: -1.1,
+    fontFamily: 'Inter-Regular',
+    color: colors.black50,
   },
-  progressFill: {
-    height: '100%',
-    backgroundColor: '#7CA62B',
-    borderRadius: 999,
+  replayButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    borderRadius: moderateScale(28),
+    paddingVertical: verticalScale(6),
+    paddingLeft: scale(8),
+    paddingRight: scale(12),
+    gap: scale(6),
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  progressLabel: {
-    fontSize: 12,
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
-    color: '#708892',
+  replayText: {
+    fontSize: textScale(11),
+    letterSpacing: -0.121,
+    fontFamily: 'Inter-SemiBold',
+    color: colors.buttonLabel,
   },
-  completedLabel: {
-    fontSize: 12,
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
-    color: '#7CA62B',
-  },
-  lockedLabel: {
-    fontSize: 12,
-    letterSpacing: -0.132,
-    fontFamily: 'Inter-Medium',
-    color: '#708892',
-  },
-  iconCircle: {
-    width: 31,
-    height: 31,
-    borderRadius: 15.5,
+  playCircle: {
+    width: scale(24),
+    height: scale(24),
+    borderRadius: scale(12),
+    backgroundColor: colors.darkIconButtonBg,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  iconActive: {
-    backgroundColor: '#161A34',
-  },
-  iconCompleted: {
-    backgroundColor: 'rgba(124,166,43,0.15)',
-  },
-  iconLocked: {
-    backgroundColor: 'rgba(244,243,243,0.7)',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 2,
+    elevation: 2,
   },
 });

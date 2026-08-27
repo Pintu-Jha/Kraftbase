@@ -24,9 +24,12 @@ export type LessonStatus = 'locked' | 'active' | 'completed';
 export interface Lesson {
   id: string;
   title: string;        
+  description: string;
+  duration: string;
   backgroundColor: string;
   status: LessonStatus;
-  progress?: number;   
+  progress?: number;
+  buttonText?: string;
 }
 
 // ─── Analytics ────────────────────────────────────────────────────────────────

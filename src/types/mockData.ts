@@ -25,12 +25,64 @@ export const MOCK_COURSES: Course[] = [
 
 
 export const MOCK_LESSONS: Lesson[] = [
-  { id: '1', title: 'A for Apple', backgroundColor: '#F4EFD7', status: 'completed', progress: 1 },
-  { id: '2', title: 'B for Ball', backgroundColor: '#FFE9E9', status: 'completed', progress: 1 },
-  { id: '3', title: 'C for Cat', backgroundColor: '#E5CDFF', status: 'active', progress: 0.6 },
-  { id: '4', title: 'D for Dog', backgroundColor: '#D7EAF8', status: 'active', progress: 0.2 },
-  { id: '5', title: 'E for Elephant', backgroundColor: '#F9E9DC', status: 'locked' },
-  { id: '6', title: 'F for Fish', backgroundColor: '#F4EFD7', status: 'locked' },
+  { 
+    id: '1', 
+    title: 'A for Apple', 
+    description: 'Learn the sound of A and objects that start with A',
+    duration: '2 min',
+    backgroundColor: '#F4EFD7', 
+    status: 'completed', 
+    progress: 1,
+    buttonText: 'Replay'
+  },
+  { 
+    id: '2', 
+    title: 'B for Ball', 
+    description: 'Recognize the letter B and its phonetic sound',
+    duration: '3 min',
+    backgroundColor: '#FFE9E9', 
+    status: 'active', 
+    progress: 0.6,
+    buttonText: 'Continue'
+  },
+  { 
+    id: '3', 
+    title: 'D for Dog', 
+    description: 'Hear and repeat the D sound',
+    duration: '5 min',
+    backgroundColor: '#D7EAF8', 
+    status: 'active', 
+    progress: 0,
+    buttonText: 'Start Lesson'
+  },
+  { 
+    id: '4', 
+    title: 'C for Cat', 
+    description: 'Learn the "C" sound with fun animations',
+    duration: '10 min',
+    backgroundColor: '#E5CDFF', 
+    status: 'active', 
+    progress: 0,
+    buttonText: 'Start Lesson'
+  },
+  { 
+    id: '5', 
+    title: 'E for Elephant', 
+    description: 'Discover the E sound and practice words',
+    duration: '10 min',
+    backgroundColor: '#F9E9DC', 
+    status: 'locked',
+    buttonText: 'Locked'
+  },
+  { 
+    id: '6', 
+    title: 'F for Fish', 
+    description: 'Learn F sound with underwater theme',
+    duration: '8 min',
+    backgroundColor: '#F4EFD7', 
+    status: 'locked',
+    buttonText: 'Locked'
+  },
 ];
 
 export const MOCK_ANALYTICS: AnalyticsData = {
