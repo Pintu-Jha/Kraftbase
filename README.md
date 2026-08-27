@@ -25,6 +25,17 @@ For web:
 npm run web
 ```
 
+## Demo
+
+[Watch the screen recording of the running app](https://drive.google.com/file/d/1nT6Mwc7usTfhwbaQc0mfcVgr2kraO-OY/view?usp=sharing)
+
+### Screenshots
+
+![Onboarding screen](src/assets/screenshots/image.png)
+![Home screen](src/assets/screenshots/image%20copy.png)
+![Lessons screen](src/assets/screenshots/image%20copy%202.png)
+![Analytics screen](src/assets/screenshots/image%20copy%203.png)
+
 ## Quality Checks
 
 ```bash
