@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LessonListItem } from '../../components/composite/LessonListItem';
-import { BlurCard } from '../../components/ui/BlurCard';
-import { IconButton } from '../../components/ui/IconButton';
+import { LessonHero } from '../../components/composite/LessonHero';
+import { AiBuddyProgress } from '../../components/composite/AiBuddyProgress';
 import { MOCK_LESSONS } from '../../types/mockData';
-import { scale, verticalScale, moderateScale, textScale } from '../../theme/responsive';
+import { scale, verticalScale, textScale } from '../../theme/responsive';
 import { colors } from '../../theme/colors';
 import type { LessonsScreenProps } from '../../navigation/types';
 
@@ -22,26 +22,21 @@ export const LessonsScreen: React.FC<LessonsScreenProps> = ({ navigation, route 
     <SafeAreaView style={styles.safe} edges={['top']}>
       <StatusBar barStyle="dark-content" />
 
-      {/* Hero section with blur card AI banner */}
-      <View style={styles.hero}>
-        <BlurCard
-          intensity={75}
-          tint="light"
-          borderRadius={28}
-          backgroundColor="rgba(255,255,255,0.15)"
-          style={styles.backButtonBlur}
-        >
-          <IconButton
-            icon="arrow-back"
-            size={48}
-            iconSize={20}
-            backgroundColor="transparent"
-            onPress={() => navigation.goBack()}
-          />
-        </BlurCard>
-        <Text style={styles.heroTitle}>Learn {courseTitle} with fun sounds</Text>
-        <Text style={styles.heroSubtitle}>{MOCK_LESSONS.length} lessons available</Text>
-      </View>
+      {/* Hero section with illustration */}
+      <LessonHero
+        category="Letters"
+        title="Learn ABC"
+        subtitle="with fun sounds"
+        lessonCount={MOCK_LESSONS.length}
+        duration="1hr 30 min"
+        onBackPress={() => navigation.goBack()}
+      />
+
+      {/* AI Buddy Progress Banner */}
+      <AiBuddyProgress
+        message="You're learning great today!"
+        progress={12}
+      />
 
       {/* Lesson list */}
       <ScrollView
@@ -73,32 +68,6 @@ const styles = StyleSheet.create({
   safe: {
     flex: 1,
     backgroundColor: colors.heroBackground,
-  },
-  hero: {
-    backgroundColor: colors.heroBackground,
-    borderBottomLeftRadius: moderateScale(32),
-    borderBottomRightRadius: moderateScale(32),
-    paddingHorizontal: scale(20),
-    paddingTop: verticalScale(16),
-    paddingBottom: verticalScale(28),
-    gap: verticalScale(8),
-  },
-  backButtonBlur: {
-    width: scale(48),
-    height: scale(48),
-    marginBottom: verticalScale(8),
-  },
-  heroTitle: {
-    fontSize: textScale(25),
-    letterSpacing: -0.275,
-    fontFamily: 'Inter-SemiBold',
-    color: colors.black,
-  },
-  heroSubtitle: {
-    fontSize: textScale(14),
-    letterSpacing: -0.154,
-    fontFamily: 'Inter-Regular',
-    color: colors.mutedBodyText,
   },
   listContainer: {
     flex: 1,
