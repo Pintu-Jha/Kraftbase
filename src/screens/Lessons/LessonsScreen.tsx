@@ -123,17 +123,8 @@ export const LessonsScreen: React.FC<LessonsScreenProps> = ({
         showsVerticalScrollIndicator={false}
         style={styles.listContainer}
         contentContainerStyle={styles.listContent}
-        ListHeaderComponent={
-          <Text style={styles.sectionLabel}>
-            All Lessons
-          </Text>
-        }
         ListEmptyComponent={
           <View style={styles.emptyState}>
-            <Text style={styles.emptyEmoji}>
-              📭
-            </Text>
-
             <Text style={styles.emptyTitle}>
               No lessons yet
             </Text>
