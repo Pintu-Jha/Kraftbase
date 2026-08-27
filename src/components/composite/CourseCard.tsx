@@ -1,9 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { BlurCard } from '../ui/BlurCard';
-import { Avatar } from '../ui/Avatar';
 import { Chip } from '../ui/Chip';
+import { KidWithPainting } from '../../assets/illustrations/KidWithPainting';
+import { Play } from '../../assets/icons/svg/Play';
+import { Colors } from '../../assets/icons/svg/Colors';
+import { Letters } from '../../assets/icons/svg/Letters';
+import { Lessons } from '../../assets/icons/svg/Lesson';
+import { Clock } from '../../assets/icons/svg/Clock';
+import { scale, verticalScale, moderateScale, textScale } from '../../theme/responsive';
+import { colors } from '../../theme/colors';
 import type { Course } from '../../types/index';
 
 interface CourseCardProps {
@@ -12,6 +18,8 @@ interface CourseCardProps {
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
+  const IconComponent = course.type.toLowerCase().includes('colors') ? Colors : Letters;
+
   return (
     <TouchableOpacity
       style={[styles.card, { backgroundColor: course.backgroundColor }]}
@@ -19,97 +27,144 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onPress }) => {
       activeOpacity={0.9}
     >
       <View style={styles.topRow}>
-        <Avatar size={48} backgroundColor="rgba(255,255,255,0.5)" emoji={course.imageEmoji || '🎨'} />
+        <View style={styles.iconContainer}>
+          <IconComponent/>
+        </View>
 
         <View style={styles.metaChips}>
-          <Chip icon="book-outline" iconSize={12} label={`${course.lessonCount} lessons`} variant="frosted" />
-          <Chip icon="time-outline" iconSize={12} label="10 min" variant="frosted" />
+          <Chip
+            icon={<Lessons width={12} height={12} />}
+            label={`${course.lessonCount} lessons`}
+            variant="frosted"
+          />
+          <Chip
+            icon={<Clock width={12} height={12} />}
+            label="10 min"
+            variant="frosted"
+          />
         </View>
       </View>
 
-      <View style={styles.illustrationArea}>
-        <Text style={styles.illustrationPlaceholder}>👩‍🎨</Text>
-      </View>
-
       <View style={styles.textSection}>
-        <Text style={styles.category}>{course.category}</Text>
-        <Text style={styles.title}>{course.title}</Text>
+        <Text style={styles.title} numberOfLines={1} adjustsFontSizeToFit>
+          {course.title}
+        </Text>
+        <Text style={styles.subTitle}>
+          {course.subTitle}
+        </Text>
       </View>
 
-      <BlurCard
-        intensity={65}
-        tint="light"
-        borderRadius={56}
-        backgroundColor="rgba(255,255,255,0.5)"
-        style={styles.ctaBlurCard}
-      >
-        <TouchableOpacity style={styles.ctaButton} onPress={onPress} activeOpacity={0.8}>
-          <Text style={styles.ctaLabel}>Start learning</Text>
-          <Ionicons name="play" size={16} color="#010000" />
-        </TouchableOpacity>
-      </BlurCard>
+      <View style={styles.contentArea}>
+        <View style={styles.illustrationWrap}>
+          <KidWithPainting width={scale(145)} height={verticalScale(146)} />
+        </View>
+
+        <BlurCard
+          intensity={50}
+          tint="light"
+          borderRadius={moderateScale(64)}
+          backgroundColor={colors.frostedLessonBanner}
+          style={styles.ctaBlurCard}
+        >
+          <TouchableOpacity style={styles.ctaButton} onPress={onPress} activeOpacity={0.8}>
+            <Text style={styles.ctaLabel}>Start learning</Text>
+            <View style={styles.playButtonCircle}>
+              <Play width={scale(18)} height={scale(18)} />
+            </View>
+          </TouchableOpacity>
+        </BlurCard>
+      </View>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    width: 300,
-    height: 380,
-    borderRadius: 32,
-    padding: 24,
-    marginRight: 16,
+    width: scale(280),
+    height: verticalScale(315),
+    borderRadius: moderateScale(32),
+    padding: scale(12),
+    marginRight: scale(16),
   },
   topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 20,
+    alignItems: 'center',
   },
-  metaChips: {
-    gap: 6,
-    alignItems: 'flex-end',
-  },
-  illustrationArea: {
-    flex: 1,
+  iconContainer: {
+    width: scale(44),
+    height: scale(44),
+    borderRadius: scale(22),
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  illustrationPlaceholder: {
-    fontSize: 120,
+  metaChips: {
+    flexDirection: 'row',
+    gap: scale(2),
+    alignItems: 'center',
   },
   textSection: {
-    gap: 4,
-    marginBottom: 16,
-  },
-  category: {
-    fontSize: 13,
-    letterSpacing: -0.143,
-    fontFamily: 'Inter-Regular',
-    color: 'rgba(1,0,0,0.5)',
+    gap: verticalScale(2),
+    alignItems: 'flex-start',
+    marginTop: verticalScale(20),
+    paddingRight: scale(8),
   },
   title: {
-    fontSize: 24,
-    letterSpacing: -0.264,
-    fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    fontSize: textScale(14),
+    letterSpacing: -1.1,
+    fontFamily: 'Inter-Regular',
+    color: colors.gray,
+  },
+  subTitle: {
+    fontSize: textScale(28),
+    letterSpacing: -1.1,
+    fontFamily: 'Inter-Medium',
+    color: colors.black,
+    lineHeight: textScale(32),
+  },
+  contentArea: {
+    flex: 1,
+    position: 'relative',
+  },
+  illustrationWrap: {
+    position: 'absolute',
+    right: scale(30),
+    bottom: verticalScale(25),
   },
   ctaBlurCard: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
     marginHorizontal: 0,
   },
   ctaButton: {
     flexDirection: 'row',
-    borderRadius: 56,
-    paddingVertical: 14,
-    paddingHorizontal: 24,
+    paddingVertical: verticalScale(10),
+    paddingLeft: scale(21),
+    paddingRight: scale(10),
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
   },
   ctaLabel: {
-    fontSize: 15,
-    letterSpacing: -0.165,
+    fontSize: textScale(18),
+    letterSpacing: -0.198,
     fontFamily: 'Inter-SemiBold',
-    color: '#010000',
+    color: colors.buttonLabel,
+    flex: 1,
+  },
+  playButtonCircle: {
+    width: scale(40),
+    height: scale(40),
+    borderRadius: scale(20),
+    backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
   },
 });
