@@ -77,9 +77,8 @@ const styles = StyleSheet.create({
   },
   chipFrosted: {
     borderRadius: 24,
-    height: 28,
-    paddingHorizontal: 8,
-    paddingVertical: 8,
+    height: 36,
+    padding: 12,
     gap: 4,
     backgroundColor: 'rgba(255,255,255,0.29)',
   },

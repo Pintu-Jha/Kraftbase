@@ -1,69 +1,73 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StyleProp, ViewStyle, Image } from 'react-native';
 import { BlurCard } from '../ui/BlurCard';
-import { ProgressRing } from '../../assets/icons/svg/ProgressRing';
 import { scale, verticalScale, moderateScale, textScale } from '../../theme/responsive';
 import { colors } from '../../theme/colors';
 import Svg, { Circle, G } from 'react-native-svg';
+import { ProgressRing } from '../../assets/icons/svg/ProgressRing';
 
 interface AiBuddyProgressProps {
   message: string;
-  progress: number; // 0-100
+  progress: number;
+  style?: StyleProp<ViewStyle>
 }
 
 export const AiBuddyProgress: React.FC<AiBuddyProgressProps> = ({
   message,
   progress,
+  style
 }) => {
-  const size = scale(80);
-  const strokeWidth = scale(6);
+  const size = scale(45);
+  const strokeWidth = scale(5);
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
     <BlurCard
-      intensity={75}
+      intensity={21}
       tint="light"
-      borderRadius={moderateScale(24)}
-      backgroundColor="rgba(255,255,255,0.5)"
-      style={styles.container}
+      borderRadius={moderateScale(25)}
+      backgroundColor="rgba(255,255,255,0.4)"
+      style={StyleSheet.flatten(style)}
     >
       <View style={styles.content}>
-        {/* AI Avatar */}
-        <View style={styles.avatarContainer}>
-          <View style={styles.avatar}>
-            <View style={styles.robotFace}>
-              <View style={styles.robotEyes}>
-                <View style={styles.eye} />
-                <View style={styles.eye} />
-              </View>
-              <View style={styles.robotMouth} />
-            </View>
+        <View style={styles.leftGroup}>
+          <View style={styles.avatarContainer}>
+            <Image
+              source={require('../../assets/icons/Static/AIBuddy.png')}
+              style={styles.avatarImage}
+              resizeMode="contain"
+            />
           </View>
-          <View style={styles.sparkle} />
+
+          <View style={styles.textContent}>
+            <Text
+              style={styles.label}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              adjustsFontSizeToFit
+              minimumFontScale={0.85}
+            >
+              Your Ai buddy
+            </Text>
+            <Text
+              style={styles.message}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+              adjustsFontSizeToFit
+              minimumFontScale={0.8}
+            >
+              {message}
+            </Text>
+          </View>
         </View>
 
-        {/* Text Content */}
-        <View style={styles.textContent}>
-          <Text style={styles.label}>Your Ai buddy</Text>
-          <Text style={styles.message}>{message}</Text>
-        </View>
-
-        {/* Progress Ring */}
         <View style={styles.progressContainer}>
-          <Svg width={size} height={size}>
+          <View style={styles.circleBackground} />
+          <ProgressRing width={size} height={size} fillColor={'#686F3E33'} />
+          <Svg width={size} height={size} style={styles.progressOverlay}>
             <G rotation="-90" origin={`${size / 2}, ${size / 2}`}>
-              {/* Background Circle */}
-              <Circle
-                cx={size / 2}
-                cy={size / 2}
-                r={radius}
-                stroke={colors.incomplete}
-                strokeWidth={strokeWidth}
-                fill="transparent"
-              />
-              {/* Progress Circle */}
               <Circle
                 cx={size / 2}
                 cy={size / 2}
@@ -87,76 +91,58 @@ export const AiBuddyProgress: React.FC<AiBuddyProgressProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: scale(20),
-  },
   content: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: scale(16),
-    paddingVertical: verticalScale(16),
-    gap: scale(12),
+    justifyContent: 'space-between',
+    paddingHorizontal: scale(14),
+    paddingVertical: verticalScale(11),
+  },
+  leftGroup: {
+    flex: 1, 
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: scale(8),
+    marginRight: scale(8),
   },
   avatarContainer: {
     position: 'relative',
   },
-  avatar: {
-    width: scale(64),
-    height: scale(64),
-    borderRadius: scale(32),
-    backgroundColor: colors.robotAvatarCircleBg,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  robotFace: {
-    alignItems: 'center',
-    gap: verticalScale(6),
-  },
-  robotEyes: {
-    flexDirection: 'row',
-    gap: scale(8),
-  },
-  eye: {
-    width: scale(8),
-    height: scale(8),
-    borderRadius: scale(4),
-    backgroundColor: '#00E5FF',
-  },
-  robotMouth: {
-    width: scale(20),
-    height: scale(6),
-    borderRadius: scale(3),
-    backgroundColor: '#00E5FF',
-  },
-  sparkle: {
-    position: 'absolute',
-    top: scale(-4),
-    right: scale(-4),
-    width: scale(16),
-    height: scale(16),
-    backgroundColor: '#7CA62B',
-    borderRadius: scale(8),
+  avatarImage: {
+    width: scale(34),
+    height: scale(34),
   },
   textContent: {
-    flex: 1,
-    gap: verticalScale(2),
+    flex: 1, 
+    gap: verticalScale(7),
   },
   label: {
-    fontSize: textScale(13),
-    letterSpacing: -0.143,
+    fontSize: textScale(12),
+    letterSpacing: -0.132,
     fontFamily: 'Inter-Regular',
-    color: colors.gray,
+    color: colors.black50,
   },
   message: {
-    fontSize: textScale(16),
-    letterSpacing: -0.176,
-    fontFamily: 'Inter-SemiBold',
+    fontSize: textScale(14),
+    letterSpacing: -0.154,
+    fontFamily: 'Inter-Medium',
     color: colors.black,
   },
   progressContainer: {
     position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
+    flexShrink: 0, 
+  },
+  circleBackground: {
+    position: 'absolute',
+    width: scale(55),
+    height: scale(55),
+    borderRadius: scale(27.5),
+    backgroundColor: '#FFFFFF80',
+  },
+  progressOverlay: {
+    position: 'absolute',
   },
   percentageContainer: {
     position: 'absolute',
@@ -164,9 +150,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   percentage: {
-    fontSize: textScale(18),
-    letterSpacing: -0.198,
-    fontFamily: 'Inter-Bold',
+    fontSize: textScale(12),
+    letterSpacing: -0.132,
+    fontFamily: 'Inter-Medium',
     color: colors.black,
   },
 });

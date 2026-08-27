@@ -7,6 +7,7 @@
 // ─── Figma named styles ───────────────────────────────────────────────────────
 export const namedColors = {
   black: '#010000',
+  black50:'#01000080',
   btn: '#1C274C',
   bottomIconInActive:'#141B34',
   gray: '#708892',
